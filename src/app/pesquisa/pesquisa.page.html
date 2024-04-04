@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pesquisa Meteorológica</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-searchbar
+    placeholder="Pesquise o local"
+    [(ngModel)]="cidade"
+    (ionChange)="pesquisarPrevisao()"
+    (ionClear)="limparPrevisao()"
+  >
+  </ion-searchbar>
+
+  <div *ngIf="previsaoDia">
+    <h2>Previsão Meteorológica para {{ cidade }}</h2>
+    <p>{{ previsaoDia }}</p>
+  </div>
+
+  <div *ngIf="previsaoHorarios.length > 0">
+    <h3>Previsão por Horários:</h3>
+    <ion-list>
+      <ion-item *ngFor="let horario of previsaoHorarios">
+        <ion-label>{{ horario.hora }}</ion-label>
+        <ion-note slot="end"
+          >{{ horario.descricao }}, {{ horario.temperatura }}°C</ion-note
+        >
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
