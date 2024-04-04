@@ -1,0 +1,7 @@
+{
+  "name": "sol-ou-chuva",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
