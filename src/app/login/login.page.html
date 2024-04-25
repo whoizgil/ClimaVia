@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+  <ion-header
+    ><ion-title>Bem-Vindo!</ion-title>
+    <br />
+    <h3>Realize o login para acessar o app.</h3>
+  </ion-header>
+
+  <form>
+    <div class="ion-padding">
+      <ion-item>
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key-outline"></ion-icon>
+        <ion-input type="{{ showPassword ? 'text' : 'password' }}"></ion-input>
+
+        <ion-button
+          (click)="togglePasswordVisibility()"
+          expand="full"
+          color="warning"
+        >
+          <ion-icon
+            [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
+          ></ion-icon>
+        </ion-button>
+      </ion-item>
+    </div>
+    <div>
+      <a [routerLink]="['/reset']">Esqueceu sua senha?</a>
+    </div>
+  </form>
+</ion-content>

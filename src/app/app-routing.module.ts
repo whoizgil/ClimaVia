@@ -5,7 +5,7 @@ import { PesquisaPage } from './pesquisa/pesquisa.page'; // Importe a página de
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -15,6 +15,18 @@ const routes: Routes = [
   {
     path: 'pesquisa',
     loadChildren: () => import('./pesquisa/pesquisa.module').then(m => m.PesquisaPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'reset',
+    loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
   }
 ];
 
