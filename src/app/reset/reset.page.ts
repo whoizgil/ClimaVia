@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reset',
   templateUrl: './reset.page.html',
   styleUrls: ['./reset.page.scss'],
 })
-export class ResetPage implements OnInit {
+export class ResetPage {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
-  ngOnInit() {
+  enviarSenha() {
+    // Redirecionar para a tela de login
+    this.navCtrl.navigateBack('/login');
   }
 
 }
+
+
