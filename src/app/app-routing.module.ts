@@ -5,7 +5,7 @@ import { PesquisaPage } from './pesquisa/pesquisa.page'; // Importe a página de
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {

@@ -1,19 +1,25 @@
 <ion-content [fullscreen]="true">
-  <ion-header
-    ><ion-title>Bem-Vindo!</ion-title>
-    <br />
-    <h3>Realize o login para acessar o app.</h3>
+  <ion-header>
+    <div class="logo-login">
+      <img src="../../assets/imgs/logo_2.png" />
+    </div>
+    <h1 class="titulo">ClimaVia</h1>
+    <h3 class="subtitulo">Realize o login para acessar o app.</h3>
   </ion-header>
 
   <form>
     <div class="ion-padding">
       <ion-item>
         <ion-icon name="person-outline"></ion-icon>
-        <ion-input></ion-input>
+        <ion-input class="input" placeholder="Usuário"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="key-outline"></ion-icon>
-        <ion-input type="{{ showPassword ? 'text' : 'password' }}"></ion-input>
+        <ion-input
+          class="input"
+          placeholder="Senha"
+          type="{{ showPassword ? 'text' : 'password' }}"
+        ></ion-input>
 
         <ion-button
           (click)="togglePasswordVisibility()"
@@ -26,8 +32,26 @@
         </ion-button>
       </ion-item>
     </div>
-    <div>
-      <a [routerLink]="['/reset']">Esqueceu sua senha?</a>
+    <div class="esqueceusenha">
+      <a [routerLink]="['/reset']" style="color: #e0ad40"
+        >Esqueceu sua senha?</a
+      >
+    </div>
+    <div class="registro">
+      <p>
+        Ainda não tem conta?
+        <a [routerLink]="['/registro']" style="color: #e0ad40">Crie aqui!</a>
+      </p>
     </div>
   </form>
+
+  <ion-button
+    class="back-button"
+    routerLink="/home"
+    fill="solid"
+    color="warning"
+    slot="fixed"
+  >
+    <ion-icon name="arrow-back" color="light"></ion-icon>
+  </ion-button>
 </ion-content>
