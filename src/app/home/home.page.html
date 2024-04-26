@@ -3,12 +3,9 @@
     <ion-title>ClimaVia</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content class="ion-padding"
-  ><ion-button class="custom-center" (click)="irParaTelaDePesquisa()"
+<ion-content class="ion-padding" [fullscreen]="true">
+  <ion-button class="custom-center" (click)="irParaTelaDePesquisa()"
     >Ir para a tela de pesquisa</ion-button
   >
   <ion-button routerLink="/login">Ir para a tela de login</ion-button>
 </ion-content>
-
-

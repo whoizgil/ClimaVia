@@ -16,12 +16,12 @@
 
 ion-item {
     background: gray;
-    background-size: 30%;
     border-radius: 10px;
     margin-bottom: 16px;
 }
 
 ion-header {
+    box-shadow: none;
     margin-top: 100px;
     margin-bottom: 60px;
     text-align: center;
@@ -56,4 +56,6 @@ ion-header {
 .logo-login img {
     margin-left: 70px;
 }
+
+
   
