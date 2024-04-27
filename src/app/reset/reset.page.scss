@@ -1,0 +1,20 @@
+ion-title {
+    text-align: center;
+}
+
+ion-item {
+    background: gray;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+.back-button {
+    position: absolute;
+    bottom: 20px; 
+    right: 20px; 
+    width: 120px;
+    height: 40px; 
+  }
+
+  .ion-padding ion-item ion-input {
+    margin-left: 10px;
+}

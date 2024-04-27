@@ -11,15 +11,43 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-item>
-      <ion-label position="floating">Nova Senha</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Confirmar Nova Senha</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    <ion-button expand="block" color="primary" (click)="enviarSenha()">Enviar</ion-button>
+    <form>
+      <div class="ion-padding">
+        <ion-item>
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-input class="input" placeholder="Usuário"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="key-outline"></ion-icon>
+          <ion-input
+            class="input"
+            placeholder="Nova Senha"
+            type="text"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="key-outline"></ion-icon>
+          <ion-input
+            class="input"
+            placeholder="Confirme sua nova senha"
+            type="text"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button class="resetar" expand="full" type="submit"
+          >Alterar</ion-button
+        >
+      </div>
+    </form>
+
+    <ion-button
+      class="back-button"
+      routerLink="/login"
+      fill="solid"
+      color="warning"
+      slot="fixed"
+    >
+      <ion-icon name="arrow-back" color="light"></ion-icon>
+    </ion-button>
   </ion-content>
 </div>
-
