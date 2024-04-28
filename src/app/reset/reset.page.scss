@@ -1,12 +1,7 @@
-ion-title {
-    text-align: center;
+.input {
+    font-size: 300;
 }
 
-ion-item {
-    background: gray;
-    border-radius: 10px;
-    margin-bottom: 16px;
-}
 .back-button {
     position: absolute;
     bottom: 20px; 
@@ -15,6 +10,42 @@ ion-item {
     height: 40px; 
   }
 
-  .ion-padding ion-item ion-input {
+.ion-padding ion-item ion-input {
     margin-left: 10px;
 }
+
+ion-item {
+    background: gray;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+ion-header {
+    box-shadow: none;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    text-align: center;
+    .subtitulo {
+       color: gray;
+       font-size: 1.2rem;
+    }
+    .titulo {
+        
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+          sans-serif;
+    
+    }
+}
+
+
+.logo-login {
+    width: 245px;
+    height: 120px;
+}
+
+.logo-login img {
+    margin-left: 70px;
+}
+
+
+  
