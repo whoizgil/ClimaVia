@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "321548348876",
+    "project_id": "climavia-7b803",
+    "storage_bucket": "climavia-7b803.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321548348876:android:8d77ffe4cbd3ec54010169",
+        "android_client_info": {
+          "package_name": "com.arthurgil.climavia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkIiDW6m95E2DFqlhvxcOlBD1pHmcQinw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

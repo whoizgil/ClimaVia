@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "climavia-7b803": {
+      "hosting": {
+        "app": [
+          "climavia-7b803"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "climavia-7b803"
+  }
+}
