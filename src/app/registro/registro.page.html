@@ -7,7 +7,7 @@
     <h3 class="subtitulo">Crie sua conta e viaje com segurança.</h3>
   </ion-header>
 
-  <form>
+  <form (ngSubmit)="register()">
     <div class="ion-padding">
       <ion-item>
         <ion-icon name="person-outline"></ion-icon>
@@ -15,11 +15,17 @@
           type="text"
           class="input"
           placeholder="Nome Completo"
+          [(ngModel)]="fullName"
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="mail-outline"></ion-icon>
-        <ion-input type="email" class="input" placeholder="E-mail"></ion-input>
+        <ion-input
+          type="email"
+          class="input"
+          placeholder="E-mail"
+          [(ngModel)]="email"
+        ></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="key-outline"></ion-icon>
@@ -27,6 +33,7 @@
           class="input"
           placeholder="Senha"
           type="password"
+          [(ngModel)]="password"
         ></ion-input>
       </ion-item>
       <ion-item>
@@ -35,6 +42,7 @@
           class="input"
           placeholder="Confirme Sua Senha"
           type="password"
+          [(ngModel)]="confirmPassword"
         ></ion-input>
       </ion-item>
       <ion-button class="entrar" expand="full" type="submit">Criar</ion-button>
