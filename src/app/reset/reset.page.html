@@ -7,11 +7,16 @@
     <h3 class="subtitulo">Insira seu e-mail para recuperar sua senha.</h3>
   </ion-header>
 
-  <form>
+  <form (ngSubmit)="resetPassword()">
     <div class="ion-padding">
       <ion-item>
         <ion-icon name="mail-outline"></ion-icon>
-        <ion-input type="email" class="input" placeholder="E-mail"></ion-input>
+        <ion-input
+          type="email"
+          class="input"
+          placeholder="E-mail"
+          [(ngModel)]="email"
+        ></ion-input>
       </ion-item>
       <ion-button class="entrar" expand="full" type="submit">Enviar</ion-button>
     </div>

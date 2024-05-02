@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { NavController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset',
@@ -7,14 +9,29 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./reset.page.scss'],
 })
 export class ResetPage {
+  email: string = '';
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private afAuth: AngularFireAuth,
+    private toastController: ToastController,
+    private router: Router) { }
 
-  enviarSenha() {
-    // Redirecionar para a tela de login
-    this.navCtrl.navigateBack('/login');
+
+  async resetPassword() {
+    try {
+      await this.afAuth.sendPasswordResetEmail(this.email);
+      this.presentToast('Um email de redefinição de senha foi enviado para o seu email.');
+      this.router.navigate(['/login']);
+    } catch (error) {
+      this.presentToast('Erro ao enviar email de redefinição de senha. Verifique o email e tente novamente.');
+    }
   }
-
+  
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom' 
+    });
+    toast.present();
+  }  
 }
-
-

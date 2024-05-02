@@ -1,3 +1,4 @@
+
 .input {
     font-size: 300;
 }
@@ -46,6 +47,46 @@ ion-header {
 .logo-login img {
     margin-left: 70px;
 }
+
+.password-requirements {
+    margin-bottom: 15px;
+    padding-left: 5px;
+  }
+  
+  .password-requirements p {
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+  
+  .requirement {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .requirement ion-icon {
+    margin-right: 5px;
+  }
+  
+  .requirement.valid ion-icon {
+    color: green;
+  }
+  
+  .requirement:not(.valid) ion-icon {
+    color: red;
+  }
+  
+  
+  .requirement.valid {
+    color: green;
+  }
+  
+  .requirement:not(.valid) {
+    color: red;
+  }
+  
+  
 
 
   

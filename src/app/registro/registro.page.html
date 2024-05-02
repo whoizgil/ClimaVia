@@ -34,8 +34,41 @@
           placeholder="Senha"
           type="password"
           [(ngModel)]="password"
+          (input)="validatePassword()"
         ></ion-input>
       </ion-item>
+      <div class="password-requirements" *ngIf="showPasswordRequirements">
+        <p>Sua senha deve incluir no mínimo:</p>
+        <div class="requirement" [class.valid]="passwordLengthValid">
+          <ion-icon
+            [name]="passwordLengthValid ? 'checkmark-circle-outline' : 'close-circle-outline'"
+            [color]="passwordLengthValid ? 'success' : 'danger'"
+          ></ion-icon>
+          <span>Oito caracteres</span>
+        </div>
+        <div class="requirement" [class.valid]="uppercaseValid">
+          <ion-icon
+            [name]="uppercaseValid ? 'checkmark-circle-outline' : 'close-circle-outline'"
+            [color]="uppercaseValid ? 'success' : 'danger'"
+          ></ion-icon>
+          <span>Uma letra maiúscula</span>
+        </div>
+        <div class="requirement" [class.valid]="numberValid">
+          <ion-icon
+            [name]="numberValid ? 'checkmark-circle-outline' : 'close-circle-outline'"
+            [color]="numberValid ? 'success' : 'danger'"
+          ></ion-icon>
+          <span>Um número</span>
+        </div>
+        <div class="requirement" [class.valid]="specialCharacterValid">
+          <ion-icon
+            [name]="specialCharacterValid ? 'checkmark-circle-outline' : 'close-circle-outline'"
+            [color]="specialCharacterValid ? 'success' : 'danger'"
+          ></ion-icon>
+          <span>Um caractere especial</span>
+        </div>
+      </div>
+
       <ion-item>
         <ion-icon name="key-outline"></ion-icon>
         <ion-input
