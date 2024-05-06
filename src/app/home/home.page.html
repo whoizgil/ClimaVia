@@ -4,8 +4,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding" [fullscreen]="true">
-  <ion-button class="custom-center" (click)="irParaTelaDePesquisa()"
-    >Ir para a tela de pesquisa</ion-button
-  >
+  <ion-button class="custom-center" (click)="irParaTelaDePesquisa()">
+    Ir para a tela de pesquisa
+  </ion-button>
   <ion-button routerLink="/login">Ir para a tela de login</ion-button>
+  <ion-button expand="block" (click)="navegarParaFeedInfinito()">Ir para o Feed Infinito</ion-button>
 </ion-content>

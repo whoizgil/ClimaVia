@@ -1,0 +1,19 @@
+/* feed-infinito.page.scss */
+
+.previsao-info {
+    display: grid;
+    grid-template-columns: auto auto; /* Define duas colunas de largura automática */
+    grid-gap: 10px; /* Adiciona um espaço entre as colunas */
+  }
+  
+  .info-label {
+    font-weight: bold; /* Adiciona negrito à label */
+  }
+  /* feed-infinito.page.scss */
+
+.data-label {
+    margin-left: -35px; /* Adiciona um espaço entre a data e o próximo label */
+  }
+  .previsao-value {
+    margin-left: -3px; /* Adiciona um espaço entre a data e o próximo label */
+  }

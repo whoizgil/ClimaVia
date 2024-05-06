@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +9,13 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private router: Router) {}
 
   irParaTelaDePesquisa() {
     this.navCtrl.navigateForward('/pesquisa');
+  }
+
+  navegarParaFeedInfinito() {
+    this.router.navigate(['/feed-infinito']);
   }
 }
