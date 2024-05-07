@@ -1,21 +1,19 @@
-<ion-header>
-  <div class="logo-previ">
-    <ion-button
-    class="back-button"
-    routerLink="/home"
-    fill="solid"
-    color="warning"
-    slot="fixed"
-  >
-    <ion-icon name="arrow-back" color="light"></ion-icon>
-  </ion-button>
-    <img src="../../assets/imgs/logo_2.png" />
-  </div>
-  <h1 class="titulo">Previsões</h1> 
-  <h2 class="subtitulo">confira a seguir:</h2>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+  <ion-header>
+    <div class="logo-login">
+      <ion-button
+        class="back-button"
+        routerLink="/home"
+        fill="solid"
+        color="warning"
+        slot="fixed"
+      >
+        <ion-icon name="arrow-back" color="light"></ion-icon>
+      </ion-button>
+      <h1 class="titulo">Previsões</h1>
+      <img src="../../assets/imgs/logo_2.png" />
+    </div>
+  </ion-header>
   <hr class="linha-preta">
   <ion-list>
     <ion-item-group *ngFor="let cidade of previsoesCidades">
