@@ -18,13 +18,13 @@ export class RegistroPage {
   uppercaseValid: boolean = false;
   numberValid: boolean = false;
   specialCharacterValid: boolean = false;
-  
 
   constructor(
     private afAuth: AngularFireAuth,
     private toastController: ToastController,
     private router: Router
   ) {}
+
 
   validatePassword() {
     this.passwordLengthValid = this.password.length >= 8;
