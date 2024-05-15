@@ -1,38 +1,17 @@
-<ion-content [fullscreen]="true">
-  <ion-header>
-    <div class="logo-login">
-      <ion-button
-        class="back-button"
-        routerLink="/home"
-        fill="solid"
-        color="warning"
-        slot="fixed"
-      >
-        <ion-icon name="arrow-back" color="light"></ion-icon>
-      </ion-button>
-      <h1 class="titulo">Previsões</h1>
-      <img src="../../assets/imgs/logo_2.png" />
-    </div>
-  </ion-header>
-  <hr class="linha-preta">
+<ion-content>
   <ion-list>
-    <ion-item-group *ngFor="let cidade of previsoesCidades">
-      <ion-item-divider (click)="toggleExpansao(cidade)">
-        {{ cidade.cidade }}
-        <ion-icon slot="end" [name]="cidade.expandido ? 'chevron-up' : 'chevron-down'"></ion-icon>
-      </ion-item-divider>
-      <ion-item *ngIf="cidade.expandido">
-        <ion-list>
-          <ion-item *ngFor="let previsao of cidade.previsoes" class="previsao-item">
-            <ion-label class="previsao-info">
-              <div class="info-label">Data:</div>
-              <div class="data-label">{{ previsao.dt_txt }}</div>
-              <div class="info-label">Previsão:</div>
-              <div class="info-value previsao-value">{{ previsao.main.temp }}°C  {{ previsao.weather[0].description }}</div>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-item>
-    </ion-item-group>
+    <ion-item *ngFor="let article of articles">
+      <ion-label>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.description }}</p>
+      </ion-label>
+    </ion-item>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando mais..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

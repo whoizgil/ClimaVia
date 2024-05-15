@@ -5,12 +5,13 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ionic serve --proxy-config proxy.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "gerar-app": "ionic build && ionic cap copy && ionic cap sync && ionic cap open android"
+    
   },
   "private": true,
   "dependencies": {
@@ -30,6 +31,7 @@
     "@capacitor/keyboard": "5.0.8",
     "@capacitor/status-bar": "5.0.7",
     "@ionic/angular": "^7.0.0",
+    "axios": "^1.6.8",
     "cors-anywhere": "^0.4.4",
     "firebase": "^10.11.1",
     "ionicons": "^7.0.0",
@@ -56,6 +58,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^48.2.1",
     "eslint-plugin-prefer-arrow": "1.2.2",
+    "http-proxy-middleware": "^3.0.0",
     "jasmine-core": "~5.1.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.0",

@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { NavController } from '@ionic/angular'; 
-
-interface PrevisaoCidade {
-  cidade: string;
-  previsoes: any[];
-  expandido: boolean;
-}
+import { NewsService } from '../feed-infinito/news.services';
 
 @Component({
   selector: 'app-feed-infinito',
@@ -14,101 +7,24 @@ interface PrevisaoCidade {
   styleUrls: ['./feed-infinito.page.scss'],
 })
 export class FeedInfinitoPage implements OnInit {
-  previsoesCidades: PrevisaoCidade[] = [];
+  articles: any[] = [];
+  currentPage = 1;
 
-  constructor(private http: HttpClient, private navCtrl: NavController) {} 
+  constructor(private newsService: NewsService) {}
 
   ngOnInit() {
-    this.carregarPrevisoesParaCidades();
+    this.loadNews();
   }
 
-  carregarPrevisoesParaCidades() {
-    const apiKey = '101f24aa35ff919bacf271b0b5ba274b';
-    const cidades = [
-      'São Paulo',
-      'Rio de Janeiro',
-      'Salvador',
-      'Brasília',
-      'Fortaleza',
-      'Belo Horizonte',
-      'Porto Alegre',
-      'Recife',
-      'Curitiba',
-      'Goiânia',
-      'Belém',
-      'Campinas',
-      'São Luís',
-      'São Gonçalo',
-      'Maceió',
-      'Duque de Caxias',
-      'Nova Iguaçu',
-      'Santo André',
-      'Joinville',
-      'Natal',
-      'Campinas',
-      'Campo Grande',
-      'Teresina',
-      'São Bernardo do Campo',
-      'Osasco',
-      'Cuiabá',
-      'Jaboatão dos Guararapes',
-      'São José dos Campos',
-      'Ribeirão Preto',
-      'New York',
-      'Tokyo',
-      'London',
-      'Paris',
-      'Los Angeles',
-      'Berlin',
-      'Mumbai',
-      'Moscow',
-      'Istanbul',
-      'Beijing',
-      'Shanghai',
-      'Madrid',
-      'Seoul',
-      'Mexico City',
-      'Toronto',
-      'Sydney',
-      'Bangkok',
-      'Cairo',
-      'Rome',
-      'Buenos Aires',
-      'Jakarta',
-      'Lagos',
-      'Lima',
-      'Chicago',
-      'Delhi',
-      'Osaka',
-      'Kolkata',
-      'Manila',
-    ];
-    
-    const previsoesPromises = [];
-  
-    for (const cidade of cidades) {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`;
-      const promise = this.http.get(apiUrl).toPromise();
-      previsoesPromises.push(promise);
-    }
-  
-    Promise.all(previsoesPromises).then((responses: any[]) => {
-      this.previsoesCidades = responses.map((response, index) => ({
-        cidade: cidades[index],
-        previsoes: response.list,
-        expandido: true
-      }));
-      console.log(this.previsoesCidades); 
-    }).catch(error => {
-      console.error('Erro ao carregar previsões:', error);
+  loadNews() {
+    this.newsService.getNews(this.currentPage).subscribe((data: any) => {
+      this.articles = this.articles.concat(data);
     });
   }
 
-  toggleExpansao(cidade: PrevisaoCidade) {
-    cidade.expandido = !cidade.expandido;
-  }
-
-  voltarParaHome() {
-    this.navCtrl.back(); 
+  loadMore(event: any) {
+    this.currentPage++;
+    this.loadNews();
+    event.target.complete();
   }
 }
