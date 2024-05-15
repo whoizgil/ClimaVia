@@ -1,15 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="voltarParaHome()">
-        <ion-icon name="arrow-back"></ion-icon>
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <div class="logo-login">
+      <ion-button
+        class="back-button"
+        routerLink="/home"
+        fill="solid"
+        color="warning"
+        slot="fixed"
+      >
+        <ion-icon name="arrow-back" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>
-    <ion-title>Previsões do Tempo</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
+      <h1 class="titulo">Previsões</h1>
+      <img src="../../assets/imgs/logo_2.png" />
+    </div>
+  </ion-header>
+  <hr class="linha-preta">
   <ion-list>
     <ion-item-group *ngFor="let cidade of previsoesCidades">
       <ion-item-divider (click)="toggleExpansao(cidade)">
@@ -26,7 +31,6 @@
               <div class="info-value previsao-value">{{ previsao.main.temp }}°C  {{ previsao.weather[0].description }}</div>
             </ion-label>
           </ion-item>
-                                            
         </ion-list>
       </ion-item>
     </ion-item-group>

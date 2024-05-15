@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NavController } from '@ionic/angular'; // Importe NavController
+import { NavController } from '@ionic/angular'; 
 
 interface PrevisaoCidade {
   cidade: string;
@@ -16,7 +16,7 @@ interface PrevisaoCidade {
 export class FeedInfinitoPage implements OnInit {
   previsoesCidades: PrevisaoCidade[] = [];
 
-  constructor(private http: HttpClient, private navCtrl: NavController) {} // Injete NavController
+  constructor(private http: HttpClient, private navCtrl: NavController) {} 
 
   ngOnInit() {
     this.carregarPrevisoesParaCidades();
@@ -98,7 +98,7 @@ export class FeedInfinitoPage implements OnInit {
         previsoes: response.list,
         expandido: true
       }));
-      console.log(this.previsoesCidades); // Adicione esta linha para verificar as informações recebidas da API
+      console.log(this.previsoesCidades); 
     }).catch(error => {
       console.error('Erro ao carregar previsões:', error);
     });
@@ -109,6 +109,6 @@ export class FeedInfinitoPage implements OnInit {
   }
 
   voltarParaHome() {
-    this.navCtrl.back(); // Navega de volta para a página inicial
+    this.navCtrl.back(); 
   }
 }

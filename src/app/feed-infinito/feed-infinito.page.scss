@@ -1,19 +1,68 @@
-/* feed-infinito.page.scss */
-
 .previsao-info {
     display: grid;
-    grid-template-columns: auto auto; /* Define duas colunas de largura automática */
-    grid-gap: 10px; /* Adiciona um espaço entre as colunas */
+    grid-template-columns: auto auto; 
+    grid-gap: 10px; 
   }
   
   .info-label {
-    font-weight: bold; /* Adiciona negrito à label */
+    font-weight: bold; 
   }
-  /* feed-infinito.page.scss */
 
 .data-label {
-    margin-left: -35px; /* Adiciona um espaço entre a data e o próximo label */
+    margin-left: -35px; 
   }
   .previsao-value {
-    margin-left: -3px; /* Adiciona um espaço entre a data e o próximo label */
+    margin-left: -3px; 
   }
+  ion-header {
+    background-color: white; 
+    box-shadow: none;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.subtitulo {
+    position: relative;
+    text-align: center;
+    color: gray;
+    font-size: 1rem;
+}
+
+.titulo {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+  position: relative; 
+  z-index: 1; 
+  top: -100px; 
+  border: none;
+  display: block;
+}
+
+.logo-login img {
+  position: absolute;
+  display: block;
+  margin: 0 auto;
+  padding: 0 !important;
+  left: 45px;
+  border: none;
+  top: -50px; 
+  width: 80%;
+}
+
+
+.back-button {
+  position:relative;
+  bottom: 20px; 
+  left: -165px;
+  width: 50px;
+  height: 40px; 
+  margin-top: -100px;
+  z-index: 2; 
+}
+.linha-preta {
+  border: none;
+  border-bottom: 1px solid black;
+  margin-top: 15px;
+}
+
