@@ -5,7 +5,7 @@ import { PesquisaPage } from './pesquisa/pesquisa.page'; // Importe a página de
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -27,7 +27,8 @@ const routes: Routes = [
   {
     path: 'reset',
     loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
-  },  {
+  },
+  {
     path: 'feed-infinito',
     loadChildren: () => import('./feed-infinito/feed-infinito.module').then( m => m.FeedInfinitoPageModule)
   }

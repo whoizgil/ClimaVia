@@ -1,14 +1,41 @@
 
-.custom-center {
-  display: block;
-  margin: 0 auto;
+
+ion-header {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+  box-shadow: none;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  text-align: center;
+  margin-top: 50%;
+  .subtitulo {
+     color: rgb(118, 113, 113);
+     font-size: 1.3rem;
+  }
+  .titulo {
+      font-size: 2rem;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+        margin-top: 15px;
+  
+  }
+  .titulo2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+        margin: 25px;
+  }
+  
 }
 
-ion-title {
-  text-align: center;
-  font-size: 30px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-          sans-serif;
+.logo-login {
+  width: 255px;
+  height: 115px;
+}
+
+.logo-login img {
+  margin-left: 70px;
 }
 
 

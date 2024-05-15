@@ -34,7 +34,7 @@ export class LoginPage  {
     try {
       const userCredential = await this.afAuth.signInWithEmailAndPassword(this.email, this.password);
       this.presentSuccessToast('Usuário logado com sucesso');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/feed-infinito']);
     } catch (error) {
       console.error('Erro ao autenticar:', error);
       this.presentErrorToast('E-mail ou Senha inválidos');

@@ -1,12 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>ClimaVia</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="ion-padding" [fullscreen]="true">
-  <ion-button class="custom-center" (click)="irParaTelaDePesquisa()">
-    Ir para a tela de pesquisa
-  </ion-button>
-  <ion-button routerLink="/login">Ir para a tela de login</ion-button>
-  <ion-button expand="block" (click)="navegarParaFeedInfinito()">Ir para o Feed Infinito</ion-button>
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <div class="logo-login">
+      <img src="../../assets/imgs/logo_2.png" />
+    </div>
+    <ion-title class="titulo">ClimaVia</ion-title>
+    <h2 class="titulo2">
+      No ClimaVia, você viaja com segurança e o conforto de saber o clima de sua
+      rota.
+    </h2>
+    <h2 class="subtitulo">
+      Realize o
+      <a [routerLink]="['/login']" style="color: #e0ad40">login</a> para acessar
+      o app.
+    </h2>
+  </ion-header>
 </ion-content>
