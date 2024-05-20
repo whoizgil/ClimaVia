@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PesquisaPage } from './pesquisa/pesquisa.page'; // Importe a página de pesquisa
 
 const routes: Routes = [
@@ -31,12 +31,17 @@ const routes: Routes = [
   {
     path: 'feed-infinito',
     loadChildren: () => import('./feed-infinito/feed-infinito.module').then( m => m.FeedInfinitoPageModule)
+  },
+  {
+    path: 'article',
+    loadChildren: () => import('./article/article.module').then( m => m.ArticlePageModule)
   }
+
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

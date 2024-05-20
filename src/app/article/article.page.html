@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ article?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="article?.urlToImage" *ngIf="article?.urlToImage" />
+    <ion-card-header>
+      <ion-card-title>{{ article?.title }}</ion-card-title>
+      <ion-card-subtitle>{{ article?.author }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ article?.description }}</p>
+      <p>{{ article?.content }}</p>
+      <a [href]="article?.url" target="_blank"
+        >Leia mais sobre a matéria clicando aqui</a
+      >
+    </ion-card-content>
+  </ion-card>
+</ion-content>

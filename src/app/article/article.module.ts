@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { FeedInfinitoPageRoutingModule } from './feed-infinito-routing.module';
-import { FeedInfinitoPage } from './feed-infinito.page';
+
+import { ArticlePageRoutingModule } from './article-routing.module';
+
+import { ArticlePage } from './article.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FeedInfinitoPageRoutingModule
+    ArticlePageRoutingModule
   ],
-  declarations: [FeedInfinitoPage]
+  declarations: [ArticlePage]
 })
-export class FeedInfinitoPageModule {}
+export class ArticlePageModule {}
+
+

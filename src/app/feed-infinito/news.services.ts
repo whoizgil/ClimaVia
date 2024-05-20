@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Article } from '../article/article.page';
 
 @Injectable({
   providedIn: 'root',
@@ -8,15 +9,13 @@ import { map } from 'rxjs/operators';
 export class NewsService {
   private apiKey = 'fc91eff83c81472c9d03e094dcd2bb11';
   private baseUrl = 'https://newsapi.org/v2/everything';
+  private climateKeywords = ['clima', 'climático', 'meteorologia', 'temperatura', 'previsão do tempo', 'fenômenos meteorológicos'];
 
   constructor(private http: HttpClient) {}
 
-  getNews(page: number) {
-    const url = `${this.baseUrl}?q=clima&apiKey=${this.apiKey}&page=${page}&language=pt`;
-    return this.http.get(url).pipe(
-      map((response: any) => {
-        return response.articles.filter((article: any) => article.content !== '[Removed]');
-      })
-    );
+  getNews(page: number): Observable<{ articles: Article[] }> {
+    const searchTerm = this.climateKeywords.join(' OR ');
+    const url = `${this.baseUrl}?q=${searchTerm}&language=pt&apiKey=${this.apiKey}&page=${page}`;
+    return this.http.get<{ articles: Article[] }>(url);
   }
 }
