@@ -6,5 +6,5 @@ export const firebaseConfig = {
   storageBucket: "climavia-7b803.appspot.com",
   messagingSenderId: "321548348876",
   appId: "1:321548348876:web:a82403d3991ed245010169",
-  measurementId: "G-78WL52629Q" //a
+  measurementId: "G-78WL52629Q" 
 };
