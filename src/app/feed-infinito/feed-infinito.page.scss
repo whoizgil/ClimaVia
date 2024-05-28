@@ -29,5 +29,14 @@ ion-card-content {
     --ion-grid-column-padding: 10px;
   }
 }
+.caixa-duvida {
+  .alert-wrapper {
+    bottom: 60px; /* Ajuste a distância do topo conforme necessário */
+    left: unset;
+    right: 10px; /* Ajuste a distância da borda direita conforme necessário */
+    top:100px;
+  }
+}
+
 
 

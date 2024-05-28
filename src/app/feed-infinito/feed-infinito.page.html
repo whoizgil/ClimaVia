@@ -1,6 +1,15 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Feed</ion-title>
+    <!-- Novo botão para a caixa de dúvida -->
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarCaixaDuvida()">
+        <ion-icon name="help"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

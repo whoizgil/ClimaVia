@@ -17,26 +17,32 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+    loadChildren: () => import('./registro/registro.module').then(m => m.RegistroPageModule)
   },
   {
     path: 'reset',
-    loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
+    loadChildren: () => import('./reset/reset.module').then(m => m.ResetPageModule)
   },
   {
     path: 'feed-infinito',
-    loadChildren: () => import('./feed-infinito/feed-infinito.module').then( m => m.FeedInfinitoPageModule)
+    loadChildren: () => import('./feed-infinito/feed-infinito.module').then(m => m.FeedInfinitoPageModule)
   },
   {
     path: 'article',
-    loadChildren: () => import('./article/article.module').then( m => m.ArticlePageModule)
+    loadChildren: () => import('./article/article.module').then(m => m.ArticlePageModule)
+  },
+  {
+    path: 'pesquisa.page.html',  // Certifique-se que esta rota existe
+    loadChildren: () => import('./pesquisa/pesquisa.module').then(m => m.PesquisaPageModule)
+  },
+  {
+    path: 'feed-infinito.page.html',
+    loadChildren: () => import('./feed-infinito/feed-infinito.module').then(m => m.FeedInfinitoPageModule)
   }
-
-
 ];
 
 @NgModule({
