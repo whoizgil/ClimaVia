@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ClimaVia</string>
+    <string name="title_activity_main">ClimaVia</string>
+    <string name="package_name">com.climavia.com</string>
+    <string name="custom_url_scheme">com.climavia.com</string>
+</resources>
