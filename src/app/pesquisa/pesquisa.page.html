@@ -3,7 +3,13 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Pesquisa Meteorológica</ion-title>
+    <ion-title>Pesquisa Metereológica</ion-title>
+    <!-- Novo botão para a caixa de dúvida -->
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarCaixaDuvida()">
+        <ion-icon name="help"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
