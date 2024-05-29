@@ -38,5 +38,28 @@ ion-card-content {
   }
 }
 
+.logoapp {
+  display: block;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  max-height: 50px; /* Ajuste conforme necessário */
+}
+
+.intro-content {
+  text-align: center;
+  padding: 16px;
+}
+
+.logo2 {
+  width: 100%; /* Ajusta a largura da imagem para 100% do contêiner */
+  max-width: 800px; /* Limita a largura máxima da imagem */
+  height: auto; /* Mantém a proporção da imagem */
+  margin-bottom: 8px;
+}
+
+.intro-text {
+  font-size: 23px;
+  color: black;
+}
+
 
 

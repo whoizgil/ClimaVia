@@ -1,13 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button style="color: #e0ad40"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Feed</ion-title>
-    <!-- Novo botão para a caixa de dúvida -->
+    <img src="../../assets/imgs/applogo.png" alt="Imagem" class="logoapp">
     <ion-buttons slot="end">
       <ion-button (click)="mostrarCaixaDuvida()">
-        <ion-icon name="help"></ion-icon>
+        <ion-icon name="help" style="color: #e0ad40"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -15,8 +14,13 @@
 
 <ion-content [scrollEvents]="true">
   <ion-refresher slot="fixed" (ionRefresh)="refreshNews($event)">
-    <ion-refresher-content refreshingSpinner="circles"> </ion-refresher-content>
+    <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
   </ion-refresher>
+  <div class="intro-content">
+    <img src="../../assets/imgs/logo_2.png" alt="Imagem Introdução" class="logo2">
+    <p class="intro-text">Confira as últimas notícias sobre Metereologia abaixo:</p>
+  </div>
+
   <ion-grid>
     <ion-row>
       <ion-col
@@ -37,6 +41,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"

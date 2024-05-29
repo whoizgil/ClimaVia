@@ -1,19 +1,24 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button style="color: #e0ad40"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Pesquisa Metereológica</ion-title>
-    <!-- Novo botão para a caixa de dúvida -->
+    <img src="../../assets/imgs/applogo.png" alt="Imagem" class="logoapp">
     <ion-buttons slot="end">
       <ion-button (click)="mostrarCaixaDuvida()">
-        <ion-icon name="help"></ion-icon>
+        <ion-icon name="help" style="color: #e0ad40"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- Nova seção com imagem e frase -->
+  <div class="intro-content">
+    <img src="../../assets/imgs/logo_2.png" alt="Imagem Introdução" class="logo2">
+    <p class="intro-text">Descubra a previsão atual da cidade que deseja:</p>
+  </div>
+
   <ion-searchbar
     placeholder="Pesquise o local"
     [(ngModel)]="cidade"
@@ -38,4 +43,5 @@
       </ion-item>
     </ion-list>
   </div>
+
 </ion-content>

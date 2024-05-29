@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -7,16 +7,19 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  botaoFecharVisivel: boolean = false;
 
-  constructor(private alertController: AlertController) {}
+  constructor(private alertController: AlertController, private menuController: MenuController) {}
 
-  async mostrarCaixaDuvida() {
-    const alert = await this.alertController.create({
-      header: 'Caixa de Dúvida',
-      message: 'Este é um pequeno texto explicativo.',
-      buttons: ['OK']
-    });
+  mostrarBotaoFechar() {
+    this.botaoFecharVisivel = true;
+  }
 
-    await alert.present();
+  ocultarBotaoFechar() {
+    this.botaoFecharVisivel = false;
+  }
+
+  fecharMenu() {
+    this.menuController.close('main-menu');
   }
 }
