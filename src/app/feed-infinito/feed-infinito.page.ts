@@ -51,7 +51,7 @@ export class FeedInfinitoPage implements OnInit {
     const alert = await this.alertController.create({
       message: 'Aqui é onde você encontra as principais notícias sobre metereologia.',
       buttons: ['OK'],
-      cssClass: 'caixa-duvida' // Adicione a classe CSS personalizada
+      cssClass: 'caixa-duvida' 
     });
   
     await alert.present();

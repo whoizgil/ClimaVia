@@ -5,20 +5,22 @@
         <ion-toolbar>
           <ion-title style="color: #e0ad40">Menu</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="fecharMenu()" *ngIf="botaoFecharVisivel">
-              <ion-icon name="close"></ion-icon>
-            </ion-button>
+            
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
 
       <ion-content>
         <ion-list>
-          <ion-item routerLink="/feed-infinito">Home</ion-item>
-          <ion-item routerLink="/pesquisa">Pesquisa</ion-item>
-          <!-- Adicione mais itens do menu aqui -->
+          <ion-item routerLink="/feed-infinito" (click)="fecharMenu()">Home</ion-item>
+          <ion-item routerLink="/pesquisa" (click)="fecharMenu()">Pesquisa</ion-item>
         </ion-list>
       </ion-content>
+      <ion-footer>
+        <div class="logout-container">
+          <ion-button expand="block" (click)="logout()" (click)="fecharMenu()">Sair</ion-button>
+        </div>
+      </ion-footer>
     </ion-menu>
 
     <ion-router-outlet id="main-content"></ion-router-outlet>

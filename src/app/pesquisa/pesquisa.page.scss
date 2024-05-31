@@ -8,14 +8,26 @@
     padding: 16px;
   }
   
+  .tipesq {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-bottom: 30px; 
+  }
+  
   .logo2 {
-    width: 100%; /* Ajusta a largura da imagem para 100% do contêiner */
-    max-width: 800px; /* Limita a largura máxima da imagem */
-    height: auto; /* Mantém a proporção da imagem */
-    margin-bottom: 8px;
+    width: 90%; 
+    max-width: 800px; 
+    height: auto; 
+    margin-top: 30px; 
   }
   
   .intro-text {
     font-size: 23px;
     color: black;
   }
+  

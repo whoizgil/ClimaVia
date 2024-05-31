@@ -1,0 +1,22 @@
+ion-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    
+    .logout-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+  
+      ion-button {
+        --background: #e0ad40;
+        --color: white;
+        width: auto;
+        min-width: 100px; 
+        height: 40px;  
+      }
+    }
+  }
+
+  

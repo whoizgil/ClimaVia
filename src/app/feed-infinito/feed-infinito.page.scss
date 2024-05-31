@@ -31,17 +31,17 @@ ion-card-content {
 }
 .caixa-duvida {
   .alert-wrapper {
-    bottom: 60px; /* Ajuste a distância do topo conforme necessário */
+    bottom: 60px; 
     left: unset;
-    right: 10px; /* Ajuste a distância da borda direita conforme necessário */
+    right: 10px;
     top:100px;
   }
 }
 
 .logoapp {
   display: block;
-  margin: 0 auto; /* Centraliza horizontalmente */
-  max-height: 50px; /* Ajuste conforme necessário */
+  margin: 0 auto; 
+  max-height: 50px; 
 }
 
 .intro-content {
@@ -49,17 +49,29 @@ ion-card-content {
   padding: 16px;
 }
 
+.tifeed {
+  font-size: 35px;
+  color: black;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-bottom: 30px; 
+}
+
 .logo2 {
-  width: 100%; /* Ajusta a largura da imagem para 100% do contêiner */
-  max-width: 800px; /* Limita a largura máxima da imagem */
-  height: auto; /* Mantém a proporção da imagem */
-  margin-bottom: 8px;
+  width: 90%; 
+  max-width: 800px; 
+  height: auto; 
+  margin-top: 30px; 
 }
 
 .intro-text {
   font-size: 23px;
   color: black;
 }
+
 
 
 

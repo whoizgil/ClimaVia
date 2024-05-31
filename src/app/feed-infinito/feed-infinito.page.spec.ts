@@ -5,10 +5,10 @@ describe('FeedInfinitoPage', () => {
   let component: FeedInfinitoPage;
   let fixture: ComponentFixture<FeedInfinitoPage>;
 
-  beforeEach(async () => { // Adicione o modificador async para beforeEach
+  beforeEach(async () => { 
     await TestBed.configureTestingModule({
-      declarations: [FeedInfinitoPage], // Declare o componente a ser testado
-    }).compileComponents(); // Compile os componentes assíncronos
+      declarations: [FeedInfinitoPage], 
+    }).compileComponents(); 
 
     fixture = TestBed.createComponent(FeedInfinitoPage);
     component = fixture.componentInstance;
