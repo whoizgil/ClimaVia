@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from '../services/auth.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -8,17 +8,16 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage  {
+export class LoginPage {
   email: string = '';
   password: string = '';
   showPassword: boolean = false;
 
   constructor(
-    private afAuth: AngularFireAuth,
+    private authService: AuthService,
     private toastController: ToastController,
     private router: Router
   ) { }
-
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -32,12 +31,23 @@ export class LoginPage  {
     }
 
     try {
-      const userCredential = await this.afAuth.signInWithEmailAndPassword(this.email, this.password);
+      const userCredential = await this.authService.emailSignIn(this.email, this.password).toPromise();
       this.presentSuccessToast('Usuário logado com sucesso');
       this.router.navigate(['/feed-infinito']);
     } catch (error) {
       console.error('Erro ao autenticar:', error);
       this.presentErrorToast('E-mail ou Senha inválidos');
+    }
+  }
+
+  async signInWithGoogle() {
+    try {
+      const result = await this.authService.googleSignIn().toPromise();
+      this.presentSuccessToast('Usuário logado com sucesso');
+      this.router.navigate(['/feed-infinito']);
+    } catch (error) {
+      console.error('Erro ao fazer login com o Google', error);
+      this.presentErrorToast('Erro ao fazer login com o Google');
     }
   }
 

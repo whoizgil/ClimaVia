@@ -57,5 +57,16 @@ ion-header {
     margin-left: 70px;
 }
 
+.google-button {
+    color: white; 
+    font-weight: bold; 
+  }
+  
+  .google-button::part(native) {
+    border-radius: 8px; 
+    width: 60%;
+    margin-left: 80px;
+  }
+  
 
   

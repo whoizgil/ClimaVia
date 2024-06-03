@@ -94,7 +94,7 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\vapas\.gradle\cach
 	android:allowBackup
 		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:5:9-35
 	android:theme
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:10:9-40
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:10:9-47
 activity#com.climavia.com.MainActivity
 ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:12:9-25:20
 	android:label

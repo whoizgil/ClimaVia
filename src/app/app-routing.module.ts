@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../app/services/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'pesquisa',
-    loadChildren: () => import('./pesquisa/pesquisa.module').then(m => m.PesquisaPageModule)
+    loadChildren: () => import('./pesquisa/pesquisa.module').then(m => m.PesquisaPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -29,19 +31,23 @@ const routes: Routes = [
   },
   {
     path: 'feed-infinito',
-    loadChildren: () => import('./feed-infinito/feed-infinito.module').then(m => m.FeedInfinitoPageModule)
+    loadChildren: () => import('./feed-infinito/feed-infinito.module').then(m => m.FeedInfinitoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'article',
-    loadChildren: () => import('./article/article.module').then(m => m.ArticlePageModule)
+    loadChildren: () => import('./article/article.module').then(m => m.ArticlePageModule),
+    canActivate: [AuthGuard]
   },
   {
-    path: 'pesquisa.page.html',  // Certifique-se que esta rota existe
-    loadChildren: () => import('./pesquisa/pesquisa.module').then(m => m.PesquisaPageModule)
+    path: 'pesquisa.page.html',  
+    loadChildren: () => import('./pesquisa/pesquisa.module').then(m => m.PesquisaPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'feed-infinito.page.html',
-    loadChildren: () => import('./feed-infinito/feed-infinito.module').then(m => m.FeedInfinitoPageModule)
+    loadChildren: () => import('./feed-infinito/feed-infinito.module').then(m => m.FeedInfinitoPageModule),
+    canActivate: [AuthGuard]
   }
 ];
 
