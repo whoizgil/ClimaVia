@@ -12,8 +12,8 @@ string app_name
 string custom_url_scheme
 string package_name
 string title_activity_main
-style AppTheme
 style AppTheme.NoActionBar
 style AppTheme.NoActionBarLaunch
+style Theme.App.Light
 xml config
 xml file_paths
