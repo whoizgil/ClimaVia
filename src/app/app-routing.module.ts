@@ -48,7 +48,11 @@ const routes: Routes = [
     path: 'feed-infinito.page.html',
     loadChildren: () => import('./feed-infinito/feed-infinito.module').then(m => m.FeedInfinitoPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'mapa',
+    loadChildren: () => import('./mapa/mapa.module').then( m => m.MapaPageModule)
   }
+
 ];
 
 @NgModule({

@@ -1,0 +1,24 @@
+<!-- mapa.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mapa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Campo de entrada para ponto de partida -->
+  <ion-item>
+    <ion-label position="floating">Ponto de Partida</ion-label>
+    <ion-input [(ngModel)]="startPoint"></ion-input>
+  </ion-item>
+
+  <!-- Campo de entrada para destino -->
+  <ion-item>
+    <ion-label position="floating">Destino</ion-label>
+    <ion-input [(ngModel)]="endPoint"></ion-input>
+  </ion-item>
+
+  <!-- Mapa -->
+  <div id="map" style="height: 400px"></div>
+  <!-- Ajuste a altura conforme necessário -->
+</ion-content>
