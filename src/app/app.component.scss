@@ -20,4 +20,28 @@ ion-footer {
     }
   }
 
+  .greeting-box {
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 70px;
+  }
+  
+  .greeting {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    color: #000000;
+  }
+ 
+  
+  ion-toolbar {
+    --ion-color-base: #e0ad40; 
+  }
+  
+  
+  ion-button {
+    --background: #e0ad40;
+    --color: #fff; 
+  }
+  
+
   

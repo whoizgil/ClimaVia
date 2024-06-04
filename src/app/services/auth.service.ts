@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, signOut, authState } from '@angular/fire/auth';
+import { Auth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, signOut, authState, User } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user$: Observable<any>;
+  user$: Observable<User | null>;
 
   constructor(private auth: Auth) {
     this.user$ = authState(this.auth);
@@ -25,7 +26,13 @@ export class AuthService {
     return from(signOut(this.auth));
   }
 
-  getUser() {
+  getUser(): Observable<User | null> {
     return this.user$;
+  }
+
+  getUserName(): Observable<string | null> {
+    return this.user$.pipe(
+      map(user => user ? user.displayName : null)
+    );
   }
 }

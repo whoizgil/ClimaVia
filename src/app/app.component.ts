@@ -1,27 +1,36 @@
-import { Component } from '@angular/core';
-import { AlertController, MenuController } from '@ionic/angular';
-import { Router } from '@angular/router';  
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd, Event } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { AuthService } from './services/auth.service';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   botaoFecharVisivel: boolean = false;
+  showMenu: boolean = true;
+  username: string | null = null;
 
   constructor(
-    private alertController: AlertController,
     private menuController: MenuController,
-    private router: Router  
+    private router: Router,
+    private authService: AuthService
   ) {}
 
-  mostrarBotaoFechar() {
-    this.botaoFecharVisivel = true;
-  }
+  ngOnInit() {
+    this.router.events.pipe(
+      filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      const noMenuRoutes = ['/login', '/reset', '/register', '/home'];
+      this.showMenu = !noMenuRoutes.includes(event.urlAfterRedirects);
+    });
 
-  ocultarBotaoFechar() {
-    this.botaoFecharVisivel = false;
+    this.authService.getUserName().subscribe(name => {
+      this.username = name;
+    });
   }
 
   fecharMenu() {
@@ -29,7 +38,18 @@ export class AppComponent {
   }
 
   logout() {
-    
-    this.router.navigate(['/login']);
+    this.authService.signOut().subscribe(() => {
+      this.username = null;
+      this.router.navigate(['/login']);
+      this.fecharMenu();
+    });
+  }
+
+  mostrarBotaoFechar() {
+    this.botaoFecharVisivel = true;
+  }
+
+  ocultarBotaoFechar() {
+    this.botaoFecharVisivel = false;
   }
 }
