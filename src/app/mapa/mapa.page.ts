@@ -73,4 +73,8 @@ export class MapaPage implements OnInit {
       console.log(`Temperatura: ${temperature}°C, Condições: ${weatherDescription}`);
     });
   }
+
+  goBack() {
+    window.history.back();
+  }
 }
