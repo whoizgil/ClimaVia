@@ -69,6 +69,12 @@ Apache-2.0
 @firebase/webchannel-wrapper
 Apache-2.0
 
+@ionic-native/core
+MIT
+
+@ionic-native/geolocation
+MIT
+
 @ionic/angular
 MIT
 
@@ -122,6 +128,8 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 
 ionic-loader
+
+rxfire/auth
 
 rxjs
 Apache-2.0
