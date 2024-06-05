@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, Event } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
-import { filter, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs'; 
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { filter, map } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   botaoFecharVisivel: boolean = false;
   showMenu: boolean = true;
-  username: string | null = null;
+  username$: Observable<string | null> = of(null); 
 
   constructor(
     private menuController: MenuController,
@@ -21,15 +21,15 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.router.events.pipe(
-      filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      const noMenuRoutes = ['/login', '/reset', '/register', '/home'];
-      this.showMenu = !noMenuRoutes.includes(event.urlAfterRedirects);
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        const noMenuRoutes = ['/login', '/reset', '/register', '/home'];
+        this.showMenu = !noMenuRoutes.includes(event.urlAfterRedirects);
+      }
     });
 
-    this.authService.getUserName().subscribe(name => {
-      this.username = name;
+    this.authService.getUserDisplayName().subscribe(name => {
+      this.username$ = of(name);
     });
   }
 
@@ -38,10 +38,12 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.authService.signOut().subscribe(() => {
-      this.username = null;
+    this.authService.signOut().then(() => {
+      this.username$ = of(null);
       this.router.navigate(['/login']);
       this.fecharMenu();
+    }).catch(error => {
+      console.error('Erro ao fazer logout:', error);
     });
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../feed-infinito/news.services';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular'; // Importe o AlertController
+import { AlertController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-feed-infinito',
@@ -15,7 +15,7 @@ export class FeedInfinitoPage implements OnInit {
   constructor(
     private newsService: NewsService,
     private router: Router,
-    private alertController: AlertController // Adicione o AlertController ao construtor
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -51,7 +51,7 @@ export class FeedInfinitoPage implements OnInit {
     const alert = await this.alertController.create({
       message: 'Aqui é onde você encontra as principais notícias sobre metereologia.',
       buttons: ['OK'],
-      cssClass: 'custom-alert', 
+      cssClass: 'custom-alert',
     });
   
     await alert.present();

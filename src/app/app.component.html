@@ -15,9 +15,9 @@
 
       <ion-content>
         <ion-list>
-          <ion-item>
+          <ion-item *ngIf="username$ | async as user">
             <div class="greeting-box">
-              <p class="greeting" *ngIf="username">Olá, {{ username }}!</p>
+              <p class="greeting">Olá, {{ user }}!</p>
             </div>
           </ion-item>
           <ion-item routerLink="/feed-infinito" (click)="fecharMenu()"

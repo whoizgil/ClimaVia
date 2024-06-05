@@ -1,51 +1,35 @@
 import { Injectable } from '@angular/core';
-import { 
-  Auth, 
-  signInWithPopup, 
-  GoogleAuthProvider, 
-  signInWithEmailAndPassword, 
-  signOut, 
-  authState, 
-  User, 
-  fetchSignInMethodsForEmail 
-} from '@angular/fire/auth';
-import { from, Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app'; 
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user$: Observable<User | null>;
+  user$: Observable<firebase.User | null>; 
 
-  constructor(private auth: Auth) {
-    this.user$ = authState(this.auth);
+  constructor(private afAuth: AngularFireAuth) {
+    this.user$ = this.afAuth.authState;
   }
 
-  googleSignIn(): Observable<any> {
-    const provider = new GoogleAuthProvider();
-    return from(signInWithPopup(this.auth, provider));
+  googleSignIn(): Promise<any> {
+    const provider = new firebase.auth.GoogleAuthProvider(); 
+    return this.afAuth.signInWithPopup(provider);
   }
 
-  emailSignIn(email: string, password: string): Observable<any> {
-    return from(signInWithEmailAndPassword(this.auth, email, password));
+  emailSignIn(email: string, password: string): Promise<any> {
+    return this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
-  signOut(): Observable<any> {
-    return from(signOut(this.auth));
+  signOut(): Promise<void> {
+    return this.afAuth.signOut();
   }
 
-  getUser(): Observable<User | null> {
-    return this.user$;
-  }
-
-  getUserName(): Observable<string | null> {
+  getUserDisplayName(): Observable<string | null> {
     return this.user$.pipe(
       map(user => user ? user.displayName : null)
     );
-  }
-
-  fetchSignInMethodsForEmail(email: string): Observable<string[]> {
-    return from(fetchSignInMethodsForEmail(this.auth, email));
   }
 }

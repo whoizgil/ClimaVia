@@ -31,15 +31,9 @@ export class LoginPage {
     }
 
     try {
-      const signInMethods = await this.authService.fetchSignInMethodsForEmail(this.email).toPromise();
-      
-      if (signInMethods && signInMethods.includes('google.com')) {
-        this.presentErrorToast('Usuário cadastrado pelo Google, realize o login pelo Google.');
-      } else {
-        const userCredential = await this.authService.emailSignIn(this.email, this.password).toPromise();
-        this.presentSuccessToast('Usuário logado com sucesso');
-        this.router.navigate(['/feed-infinito']);
-      }
+      const userCredential = await this.authService.emailSignIn(this.email, this.password);
+      this.presentSuccessToast('Usuário logado com sucesso');
+      this.router.navigate(['/feed-infinito']);
     } catch (error) {
       console.error('Erro ao autenticar:', error);
       this.presentErrorToast('E-mail ou Senha inválidos');
@@ -48,7 +42,7 @@ export class LoginPage {
 
   async signInWithGoogle() {
     try {
-      const result = await this.authService.googleSignIn().toPromise();
+      const result = await this.authService.googleSignIn();
       this.presentSuccessToast('Usuário logado com sucesso');
       this.router.navigate(['/feed-infinito']);
     } catch (error) {

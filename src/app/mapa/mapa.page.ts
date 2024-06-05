@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { HttpClient } from '@angular/common/http';
-import { AlertController } from '@ionic/angular'; // Importe o AlertController
+import { AlertController } from '@ionic/angular'; 
 /// <reference path="globals/google.maps/index.d.ts" />
 declare var google: any;
 

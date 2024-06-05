@@ -62,6 +62,10 @@ export class RegistroPage {
   
     try {
       const userCredential = await this.afAuth.createUserWithEmailAndPassword(this.email, this.password);
+      
+     
+      await userCredential.user?.updateProfile({ displayName: this.fullName });
+
       this.presentSuccessToast("Usuário cadastrado com sucesso");
       setTimeout(() => {
         this.router.navigate(['/login']);
@@ -95,4 +99,3 @@ export class RegistroPage {
   }
 
 }  
-
