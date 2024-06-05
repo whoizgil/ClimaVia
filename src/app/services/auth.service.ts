@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, signOut, authState, User } from '@angular/fire/auth';
+import { 
+  Auth, 
+  signInWithPopup, 
+  GoogleAuthProvider, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  authState, 
+  User, 
+  fetchSignInMethodsForEmail 
+} from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -34,5 +43,9 @@ export class AuthService {
     return this.user$.pipe(
       map(user => user ? user.displayName : null)
     );
+  }
+
+  fetchSignInMethodsForEmail(email: string): Observable<string[]> {
+    return from(fetchSignInMethodsForEmail(this.auth, email));
   }
 }
