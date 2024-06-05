@@ -1,87 +1,91 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
-import { HttpClient } from '@angular/common/http';
-import { AlertController } from '@ionic/angular'; 
-/// <reference path="globals/google.maps/index.d.ts" />
-declare var google: any;
+import { GoogleMaps, GoogleMap, GoogleMapOptions } from '@ionic-native/google-maps/ngx';
+import { WeatherApi } from './weather.service';
 
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.page.html',
-  styleUrls: ['./mapa.page.scss'],
+  styleUrls: ['./mapa.page.scss']
 })
-export class MapaPage implements OnInit {
-  startPoint: string = '';
-  endPoint: string = '';
-  map: google.maps.Map | null = null;
-  currentPosition?: Geoposition;
-  googleMapsApiKey: string = 'AIzaSyBEwmpiv1iXBQQCMWtYlk_I5qjkjEArl-k';
-  openWeatherApiKey: string = '101f24aa35ff919bacf271b0b5ba274b';
+export class MapaPage {
+  origin?: string;
+  destination?: string;
+  route: any;
+  map?: GoogleMap;
+  alertController: any;
 
   constructor(
-    private geolocation: Geolocation, private http: HttpClient,
-    private alertController: AlertController
-  ) {}
+    private navCtrl: NavController,
+    private geolocation: Geolocation,
+    private googleMaps: GoogleMaps,
+    private ngZone: NgZone,
+    private weatherApi: WeatherApi
+  ) { }
 
-  ngOnInit() {
-    // Obter a posição atual do dispositivo
+  ionViewDidEnter() {
     this.geolocation.getCurrentPosition().then((position: Geoposition) => {
-      this.currentPosition = position;
+      this.origin = `${position.coords.latitude},${position.coords.longitude}`;
+    }).catch((error) => {
+      console.error('Erro ao obter localização:', error);
     });
   }
 
-  async obterRota() {
-    const startPointCoords = await this.obterCoordenadas(this.startPoint);
-    const endPointCoords = await this.obterCoordenadas(this.endPoint);
-
-    const directionsUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${startPointCoords.lat},${startPointCoords.lng}&destination=${endPointCoords.lat},${endPointCoords.lng}&key=${this.googleMapsApiKey}`;
-
-    this.http.get(directionsUrl).subscribe((data: any) => {
-      // Aqui você pode desenhar a rota no mapa
-      const route = data.routes[0];
-      const path = route.overview_polyline.points;
-      const decodedPath = google.maps.geometry.encoding.decodePath(path);
-
-      // Adicione a rota ao mapa usando polilinhas
-      const polyline = new google.maps.Polyline({
-        path: decodedPath,
-        geodesic: true,
-        strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
+  async getRoute() {
+    try {
+      const response = await this.googleMaps.create({
+        origin: this.origin,
+        destination: this.destination,
+        travelMode: 'driving'
       });
-      polyline.setMap(this.map);
+      this.route = response;
+      this.drawRoute();
+      this.getWeatherForWaypoints();
+    } catch (error) {
+      console.error('Erro ao obter rota:', error);
+    }
+  }
+
+  drawRoute() {
+    if (!this.route) return;
+    const mapOptions: GoogleMapOptions = {
+      camera: {
+        target: this.route.overview_path[0],
+        zoom: 12
+      }
+    };
+    this.map = this.googleMaps.create('map', mapOptions);
+
+    const routePolyline = this.map.addPolylineSync({
+      points: this.route.overview_path,
+      color: '#FF0000',
+      width: 2
     });
   }
 
-  async obterCoordenadas(address: string): Promise<any> {
-    const geocoder = new google.maps.Geocoder();
-    return new Promise<any>((resolve, reject) => {
-      geocoder.geocode({ address: address }, (results: google.maps.GeocoderResult[] | null, status: google.maps.GeocoderStatus) => {
-        if (status === 'OK' && results) {
-          resolve(results[0].geometry.location);
-        } else {
-          reject('Erro ao obter coordenadas');
-        }
+  async getWeatherForWaypoints() {
+    if (!this.route) return;
+    const waypoints = this.route.waypoints;
+    const weatherPromises: Promise<any>[] = [];
+
+    waypoints.forEach((waypoint: any) => {
+      const latLng = waypoint.location;
+      weatherPromises.push(this.weatherApi.getWeather(latLng.lat, latLng.lng).toPromise());
+    });
+
+    try {
+      const weatherResponses = await Promise.all(weatherPromises);
+      this.ngZone.run(() => {
+        waypoints.forEach((waypoint: any, index: number) => {
+          waypoint.weather = weatherResponses[index].weather[0].description;
+        });
       });
-    });
+    } catch (error) {
+      console.error('Erro ao obter previsão do tempo:', error);
+    }
   }
 
-  async obterPrevisaoTempo(latitude: number, longitude: number) {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${this.openWeatherApiKey}&units=metric`;
-
-    this.http.get(apiUrl).subscribe((data: any) => {
-      // Aqui você pode exibir as informações de previsão do tempo
-      const temperature = data.main.temp;
-      const weatherDescription = data.weather[0].description;
-      console.log(`Temperatura: ${temperature}°C, Condições: ${weatherDescription}`);
-    });
-  }
-
-  goBack() {
-    window.history.back();
-  }
-  
   async mostrarCaixaDuvida() {
     const alert = await this.alertController.create({
       cssClass: 'custom-alert',

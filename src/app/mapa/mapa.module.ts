@@ -5,7 +5,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { IonicModule } from '@ionic/angular';
 
 import { MapaPageRoutingModule } from './mapa-routing.module';
-
+import { GoogleMaps } from '@ionic-native/google-maps/ngx';
 import { MapaPage } from './mapa.page';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { MapaPage } from './mapa.page';
     MapaPageRoutingModule
   ],
   providers: [
-    Geolocation 
+    Geolocation , GoogleMaps
   ],
   declarations: [MapaPage]
 })

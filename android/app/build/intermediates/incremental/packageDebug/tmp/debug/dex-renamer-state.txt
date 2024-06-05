@@ -1,4 +1,4 @@
-#Tue Jun 04 19:16:13 BRT 2024
+#Wed Jun 05 16:35:07 BRT 2024
 base.0=D\:\\ClimaVia\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=D\:\\ClimaVia\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\14\\classes.dex
 base.2=D\:\\ClimaVia\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\2\\classes.dex

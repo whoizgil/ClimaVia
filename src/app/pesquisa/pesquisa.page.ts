@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AlertController } from '@ionic/angular'; // Importe o AlertController
+import { AlertController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-pesquisa',
@@ -14,7 +14,7 @@ export class PesquisaPage {
 
   constructor(
     private http: HttpClient,
-    private alertController: AlertController // Adicione o AlertController
+    private alertController: AlertController 
   ) {}
   limparCidade() {
     this.cidade = '';
