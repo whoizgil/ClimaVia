@@ -1,14 +1,17 @@
-<!-- mapa.page.html -->
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()">
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      <ion-menu-button style="color: #e0ad40"></ion-menu-button>
+    </ion-buttons>
+    <img src="../../assets/imgs/applogo.png" alt="Imagem" class="logoapp">
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarCaixaDuvida()">
+        <ion-icon name="help" style="color: #e0ad40"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Mapa</ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <!-- Campo de entrada para ponto de partida -->

@@ -45,6 +45,7 @@ export class PesquisaPage {
 
   async mostrarCaixaDuvida() {
     const alert = await this.alertController.create({
+      cssClass: 'custom-alert',
       message: 'Aqui você pode pesquisar a previsão do tempo neste exato momento.',
       buttons: ['OK']
     });
