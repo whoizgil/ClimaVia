@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular'; // Importe o AlertController
 /// <reference path="globals/google.maps/index.d.ts" />
 declare var google: any;
 
@@ -17,7 +18,10 @@ export class MapaPage implements OnInit {
   googleMapsApiKey: string = 'AIzaSyBEwmpiv1iXBQQCMWtYlk_I5qjkjEArl-k';
   openWeatherApiKey: string = '101f24aa35ff919bacf271b0b5ba274b';
 
-  constructor(private geolocation: Geolocation, private http: HttpClient) {}
+  constructor(
+    private geolocation: Geolocation, private http: HttpClient,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
     // Obter a posição atual do dispositivo
@@ -76,5 +80,15 @@ export class MapaPage implements OnInit {
 
   goBack() {
     window.history.back();
+  }
+  
+  async mostrarCaixaDuvida() {
+    const alert = await this.alertController.create({
+      cssClass: 'custom-alert',
+      message: 'Aqui será seu futuro guia, você poderá ver a previsão da sua localização atual e a do destino que desejar.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

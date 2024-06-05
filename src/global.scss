@@ -24,3 +24,31 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+/* Custom Alert Styles */
+.custom-alert {
+    --background: #3ca9b8;
+    --color: #ffffff;
+    --border-radius: 100px;
+  }
+  
+  .custom-alert .alert-message {
+    font-size: 1.2em;
+    color: #ffffff;
+    
+  }
+  
+  .custom-alert .alert-button {
+    background-color: #e0ad40; /* Fundo do botão */
+    color: #ffffff; /* Cor do texto do botão */
+    border-radius: 10px; /* Raio da borda do botão */
+    padding: 10px 20px; /* Espaçamento dentro do botão */
+    font-size: 1em; /* Tamanho do texto */
+    font-weight: normal; /* Peso do texto */
+    text-transform: uppercase; /* Transformação do texto */
+  }
+  
+  .custom-alert .alert-button:hover {
+    background-color: #9e792a; /* Fundo do botão ao passar o mouse */
+    color: #fff; /* Cor do texto ao passar o mouse */
+  }
