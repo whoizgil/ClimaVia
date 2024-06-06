@@ -11,9 +11,9 @@ export class WeatherApi {
 
   getWeather(lat: number, lon: number) {
     const params = {
-      lat,
-      lon,
-      units: 'etric',
+      lat: lat.toString(),
+      lon: lon.toString(),
+      units: 'metric', 
       lang: 'pt_br',
       appid: '101f24aa35ff919bacf271b0b5ba274b'
     };

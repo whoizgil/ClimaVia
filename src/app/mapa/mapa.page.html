@@ -13,16 +13,12 @@
 </ion-header>
 
 <ion-content>
-  <div id="map" style="width: 100%; height: 300px"></div>
-  <form (ngSubmit)="getRoute()">
-    <ion-item>
-      <ion-label>Origem</ion-label>
-      <ion-input type="text" [(ngModel)]="origin"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Destino</ion-label>
-      <ion-input type="text" [(ngModel)]="destination"></ion-input>
-    </ion-item>
-    <ion-button type="submit">Traçar Rota</ion-button>
-  </form>
+  <div id="map" style="height: 100%"></div>
+  <ion-item>
+    <ion-input label="Origem" [(ngModel)]="origin"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Destino" [(ngModel)]="destination"></ion-input>
+  </ion-item>
+  <ion-button (click)="calculateAndDisplayRoute()">Calcular Rota</ion-button>
 </ion-content>
