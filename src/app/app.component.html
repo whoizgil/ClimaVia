@@ -1,6 +1,7 @@
 <ion-app>
   <ion-split-pane contentId="main-content" *ngIf="showMenu">
     <ion-menu
+      class="custom-menu"
       side="start"
       menuId="main-menu"
       contentId="main-content"
@@ -8,8 +9,8 @@
       (ionDidClose)="ocultarBotaoFechar()"
     >
       <ion-header>
-        <ion-toolbar>
-          <ion-title style="color: #e0ad40">Menu</ion-title>
+        <ion-toolbar class="custom-toolbar">
+          <ion-title style="color: #ffff">Menu</ion-title>
         </ion-toolbar>
       </ion-header>
 
@@ -20,12 +21,8 @@
               <p class="greeting">Olá, {{ user }}!</p>
             </div>
           </ion-item>
-          <ion-item routerLink="/feed-infinito" (click)="fecharMenu()"
-            >Home</ion-item
-          >
-          <ion-item routerLink="/pesquisa" (click)="fecharMenu()"
-            >Pesquisa</ion-item
-          >
+          <ion-item routerLink="/feed-infinito" (click)="fecharMenu()">Home</ion-item>
+          <ion-item routerLink="/pesquisa" (click)="fecharMenu()">Pesquisa</ion-item>
           <ion-item routerLink="/mapa" (click)="fecharMenu()">Mapa</ion-item>
         </ion-list>
       </ion-content>

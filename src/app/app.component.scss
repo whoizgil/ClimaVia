@@ -34,10 +34,10 @@ ion-footer {
   }
  
   
-  ion-toolbar {
+  .custom-toolbar {
+    --background: #e0ad40; 
     --ion-color-base: #e0ad40; 
+    border: 1px solid black;
+    box-shadow:#000000;
   }
-  
-
-
-  
+ 
