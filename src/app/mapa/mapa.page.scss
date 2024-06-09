@@ -3,6 +3,27 @@
     margin: 0 auto; 
     max-height: 50px; 
   }
- 
+  .suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    width: calc(100% - 32px);
+    margin-top: -16px;
+  }
+
+  .suggestions div {
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .suggestions div:hover {
+    background-color: #eee;
+  }
+
+  ion-item {
+    margin-bottom: 16px;
+  }
+  
   
   
