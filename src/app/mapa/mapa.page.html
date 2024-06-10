@@ -13,12 +13,40 @@
 </ion-header>
 
 <ion-content>
-  <div id="map" style="height: 100%"></div>
   <ion-item>
-    <ion-input label="Origem" [(ngModel)]="origin"></ion-input>
+    <ion-label position="floating">Origem</ion-label>
+    <ion-input
+      id="origin-input"
+      [(ngModel)]="origin"
+      (ionInput)="onInputChange('origin', $event)"
+      clearInput
+    ></ion-input>
   </ion-item>
+  <div id="origin-suggestions" class="suggestions"></div>
+
   <ion-item>
-    <ion-input label="Destino" [(ngModel)]="destination"></ion-input>
+    <ion-label position="floating">Destino</ion-label>
+    <ion-input
+      id="destination-input"
+      [(ngModel)]="destination"
+      (ionInput)="onInputChange('destination', $event)"
+      clearInput
+    ></ion-input>
   </ion-item>
-  <ion-button (click)="calculateAndDisplayRoute()">Calcular Rota</ion-button>
+  <div id="destination-suggestions" class="suggestions"></div>
+
+  <ion-button expand="full" (click)="calculateAndDisplayRoute()"
+    >Traçar Rota</ion-button
+  >
+
+  <div id="map" style="height: 500px"></div>
+
+  <ion-list>
+    <ion-item *ngFor="let weather of weatherData">
+      <ion-label>
+        {{ weather.location.name }}: {{ weather.current.weather_descriptions[0]
+        }}, Temp: {{ weather.current.temperature }}°C
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
