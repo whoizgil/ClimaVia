@@ -262,31 +262,30 @@ export class MapaPage implements OnInit {
   </div>
   `;
 
-  // Criar a janela de informações do pin
+  
   const infoWindow = new google.maps.InfoWindow({
     content: contentString
   });
 
-  // Criar o marcador tradicional
+ 
   const marker = new google.maps.Marker({
     position: coordinate,
     map: this.map,
-    title: neighborhoodName // Título do marcador
+    title: neighborhoodName 
   });
 
-  // Adicionar evento de clique para abrir a janela de informações ao clicar no marcador
+ 
   marker.addListener('click', () => {
-    // Fechar a janela de informações anterior, se existir
+    
     if (this.currentInfoWindow) {
       this.currentInfoWindow.close();
     }
-    // Abrir a nova janela de informações
+    
     infoWindow.open(this.map, marker);
-    // Armazenar a janela de informações atual para futura referência
+    
     this.currentInfoWindow = infoWindow;
   });
 
-  // Adicionar o marcador à lista de marcadores
   this.markers.push(marker);
 }
   
