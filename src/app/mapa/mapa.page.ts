@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 declare var google: any;
 
@@ -16,7 +17,6 @@ export class MapaPage implements OnInit {
   directionsService: any;
   directionsDisplay: any;
   weatherData: any[] = [];
-  alertController: any;
   autocompleteService: any;
   placesService: any;
   originInput: HTMLInputElement | undefined;
@@ -25,9 +25,14 @@ export class MapaPage implements OnInit {
   markers: any[] = [];
   currentInfoWindow: google.maps.InfoWindow | null = null;
 
-  constructor(private geolocation: Geolocation, private http: HttpClient) {
+  constructor(
+    private geolocation: Geolocation,
+    private http: HttpClient,
+    private alertController: AlertController 
+) {
     (window as any).initMap = this.initMap.bind(this);
-  }
+}
+
 
   ngOnInit() {
     this.loadMapScript();
