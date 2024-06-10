@@ -1,21 +1,22 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:27:9-35:20
+INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:32:9-40:20
 	android:grantUriPermissions
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:31:13-47
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:36:13-47
 	android:authorities
 		INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:29:13-64
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:34:13-64
 	android:exported
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:30:13-37
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:35:13-37
 	android:name
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:28:13-62
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:33:13-62
 manifest
-ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:1-49:12
 MERGED from [:capacitor-app] D:\ClimaVia\node_modules\@capacitor\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:capacitor-geolocation] D:\ClimaVia\node_modules\@capacitor\geolocation\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-haptics] D:\ClimaVia\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:capacitor-keyboard] D:\ClimaVia\node_modules\@capacitor\keyboard\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-status-bar] D:\ClimaVia\node_modules\@capacitor\status-bar\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -25,6 +26,10 @@ MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\vapas\.gradl
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\vapas\.gradle\caches\transforms-3\4ce7c60d257b8629ab4c81cf615a92a1\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] C:\Users\vapas\.gradle\caches\transforms-3\44b764ef4a0c2818774bd443073d6bc9\transformed\coordinatorlayout-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\vapas\.gradle\caches\transforms-3\02af67d3594ada2148314bae886ebee9\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-location:21.1.0] C:\Users\vapas\.gradle\caches\transforms-3\06f1411628bee9e079549681773098a3\transformed\play-services-location-21.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\vapas\.gradle\caches\transforms-3\b68a59db1b1fa1a393854cb852c5ab1d\transformed\play-services-tasks-18.0.2\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\a115cd0868d6809f9252eb725a2422b0\transformed\play-services-basement-18.1.0\AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\vapas\.gradle\caches\transforms-3\b7681978623fb5a34dc59f8ae14b69b9\transformed\fragment-1.6.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.8.0] C:\Users\vapas\.gradle\caches\transforms-3\e7c087e2e63ca40d4727b77d524bd515\transformed\activity-1.8.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\vapas\.gradle\caches\transforms-3\f3a565aa25f09ab5646e47f1b0b3f33e\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -63,10 +68,18 @@ MERGED from [org.apache.cordova:framework:10.1.1] C:\Users\vapas\.gradle\caches\
 	xmlns:android
 		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:4:5-36:19
-INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:4:5-36:19
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:4:5-41:19
+INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:4:5-41:19
 MERGED from [:capacitor-cordova-android-plugins] D:\ClimaVia\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-9:19
 MERGED from [:capacitor-cordova-android-plugins] D:\ClimaVia\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-9:19
+MERGED from [com.google.android.gms:play-services-location:21.1.0] C:\Users\vapas\.gradle\caches\transforms-3\06f1411628bee9e079549681773098a3\transformed\play-services-location-21.1.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:21.1.0] C:\Users\vapas\.gradle\caches\transforms-3\06f1411628bee9e079549681773098a3\transformed\play-services-location-21.1.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\vapas\.gradle\caches\transforms-3\b68a59db1b1fa1a393854cb852c5ab1d\transformed\play-services-tasks-18.0.2\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\vapas\.gradle\caches\transforms-3\b68a59db1b1fa1a393854cb852c5ab1d\transformed\play-services-tasks-18.0.2\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\a115cd0868d6809f9252eb725a2422b0\transformed\play-services-basement-18.1.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\a115cd0868d6809f9252eb725a2422b0\transformed\play-services-basement-18.1.0\AndroidManifest.xml:20:5-24:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\vapas\.gradle\caches\transforms-3\61f606930917a64588c199b54d3d711a\transformed\emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\vapas\.gradle\caches\transforms-3\61f606930917a64588c199b54d3d711a\transformed\emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\vapas\.gradle\caches\transforms-3\7d158143758428a9a27e664e481c199e\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:23:5-33:19
@@ -95,46 +108,62 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\vapas\.gradle\cach
 		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:5:9-35
 	android:theme
 		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:10:9-47
+meta-data#com.google.android.geo.API_KEY
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:13:9-15:70
+	android:value
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:15:13-68
+	android:name
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:14:13-58
 activity#com.climavia.com.MainActivity
-ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:12:9-25:20
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:17:9-30:20
 	android:label
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:15:13-56
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:20:13-56
 	android:launchMode
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:17:13-44
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:22:13-44
 	android:exported
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:18:13-36
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:23:13-36
 	android:configChanges
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:13:13-129
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:18:13-129
 	android:theme
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:16:13-62
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:21:13-62
 	android:name
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:14:13-41
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:19:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:20:13-23:29
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:25:13-28:29
 action#android.intent.action.MAIN
-ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:22:17-77
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:22:27-74
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:27:27-74
 uses-permission#android.permission.INTERNET
-ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:40:5-67
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:45:5-67
 	android:name
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:40:22-64
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:45:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:46:5-79
+	android:name
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:46:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:47:5-81
+	android:name
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:47:22-78
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:32:13-34:64
+ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:37:13-39:64
 	android:resource
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:34:17-51
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:39:17-51
 	android:name
-		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:33:17-67
+		ADDED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml:38:17-67
 uses-sdk
 INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml
 INJECTED from D:\ClimaVia\android\app\src\main\AndroidManifest.xml
 MERGED from [:capacitor-app] D:\ClimaVia\node_modules\@capacitor\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-app] D:\ClimaVia\node_modules\@capacitor\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:capacitor-geolocation] D:\ClimaVia\node_modules\@capacitor\geolocation\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:capacitor-geolocation] D:\ClimaVia\node_modules\@capacitor\geolocation\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-haptics] D:\ClimaVia\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-haptics] D:\ClimaVia\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-keyboard] D:\ClimaVia\node_modules\@capacitor\keyboard\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
@@ -153,6 +182,14 @@ MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] C:\Users\vapas\
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] C:\Users\vapas\.gradle\caches\transforms-3\44b764ef4a0c2818774bd443073d6bc9\transformed\coordinatorlayout-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\vapas\.gradle\caches\transforms-3\02af67d3594ada2148314bae886ebee9\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\vapas\.gradle\caches\transforms-3\02af67d3594ada2148314bae886ebee9\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-location:21.1.0] C:\Users\vapas\.gradle\caches\transforms-3\06f1411628bee9e079549681773098a3\transformed\play-services-location-21.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:21.1.0] C:\Users\vapas\.gradle\caches\transforms-3\06f1411628bee9e079549681773098a3\transformed\play-services-location-21.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\vapas\.gradle\caches\transforms-3\b68a59db1b1fa1a393854cb852c5ab1d\transformed\play-services-tasks-18.0.2\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\vapas\.gradle\caches\transforms-3\b68a59db1b1fa1a393854cb852c5ab1d\transformed\play-services-tasks-18.0.2\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\a115cd0868d6809f9252eb725a2422b0\transformed\play-services-basement-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\a115cd0868d6809f9252eb725a2422b0\transformed\play-services-basement-18.1.0\AndroidManifest.xml:18:5-43
 MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\vapas\.gradle\caches\transforms-3\b7681978623fb5a34dc59f8ae14b69b9\transformed\fragment-1.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\vapas\.gradle\caches\transforms-3\b7681978623fb5a34dc59f8ae14b69b9\transformed\fragment-1.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.8.0] C:\Users\vapas\.gradle\caches\transforms-3\e7c087e2e63ca40d4727b77d524bd515\transformed\activity-1.8.0\AndroidManifest.xml:20:5-44
@@ -219,6 +256,20 @@ uses-permission#android.permission.VIBRATE
 ADDED from [:capacitor-haptics] D:\ClimaVia\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-66
 	android:name
 		ADDED from [:capacitor-haptics] D:\ClimaVia\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-63
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\bab3e45283c871fcc747aac856dcb0cd\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\a115cd0868d6809f9252eb725a2422b0\transformed\play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\a115cd0868d6809f9252eb725a2422b0\transformed\play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\vapas\.gradle\caches\transforms-3\a115cd0868d6809f9252eb725a2422b0\transformed\play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\vapas\.gradle\caches\transforms-3\61f606930917a64588c199b54d3d711a\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\vapas\.gradle\caches\transforms-3\7d158143758428a9a27e664e481c199e\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:24:9-32:20
