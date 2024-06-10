@@ -189,6 +189,7 @@ export class MapaPage implements OnInit {
       if (status === 'OK') {
         this.directionsDisplay.setDirections(response);
         this.routeCoordinates = response.routes[0].overview_path;
+        this.addPinsAlongRoute();
         this.addPinsAlongRoute(); // Chama a função para adicionar os pins
       } else {
         window.alert('Falha ao carregar a rota: ' + status);
@@ -212,14 +213,16 @@ export class MapaPage implements OnInit {
       const weatherData = await this.getWeatherData(coordinate.lat(), coordinate.lng());
       
       // Verifica se o bairro está destacado nas previsões do tempo
-      const neighborhoodName = this.extractNeighborhood(weatherData);
-      if (neighborhoodName) {
-        this.addPin(coordinate, weatherData, neighborhoodName);
+      const neighborhood = this.extractNeighborhood(weatherData);
+      if (neighborhood) {
+        this.addPin(coordinate, weatherData, neighborhood);
       }
   
       if (this.weatherData.length >= 10) break; // Garantir que não ultrapasse 10 pins
     }
   }
+
+
   async getWeatherData(lat: number, lng: number) {
     const apiKey = '2a14f0fa6a03ab6afe2e622b509b5238'; // Sua chave de API do OpenWeather
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric&lang=pt`;
@@ -245,49 +248,120 @@ export class MapaPage implements OnInit {
   }
   
   async addPin(coordinate: any, weatherData: any, neighborhoodName: string) {
-    const marker = new google.maps.Marker({
-      position: coordinate,
-      map: this.map
-    });
-  
-    this.markers.push(marker); // Adiciona o marcador à lista de marcadores
-  
-    marker.addListener('click', async () => {
-      try {
-        // Obter o nome do bairro usando Geocoding Reverso do Google Maps
-        const neighborhoodName = await this.getNeighborhoodName(coordinate.lat(), coordinate.lng());
-  
-        // Obter o nome exato do local
-        const exactLocationName = await this.getExactLocationName(coordinate.lat(), coordinate.lng());
-  
-        // Obter dados do clima usando a API OpenWeather
-        const weatherData = await this.getWeatherData(coordinate.lat(), coordinate.lng());
-  
-        // Montar o conteúdo da janela de informações do pin
-const contentString = `
-<div style="font-size: 14px; text-align: center;">
-  <h2 style="margin: 0; padding: 0;">${neighborhoodName}</h2>
-  <p style="margin: 0; padding: 0; font-weight: bold;">${exactLocationName}</p>
-  <p style="margin: 0; padding: 0;"><img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="${weatherData.weather[0].description}"></p>
-  <p style="margin: 0; padding: 0; font-size: 16px;">${this.translateWeatherDescription(weatherData.weather[0].description)}</p>
-  <p style="margin: 0; padding: 0;">${weatherData.main.temp}°C</p>
-</div>
-`;
+  // Obter o nome exato do local
+  const exactLocationName = await this.getExactLocationName(coordinate.lat(), coordinate.lng());
 
+  // Montar o conteúdo da janela de informações do pin
+  const contentString = `
+  <div style="font-size: 14px; text-align: center;">
+    <h2 style="margin: 0; padding: 0;">${neighborhoodName}</h2>
+    <p style="margin: 0; padding: 0; font-weight: bold;">${exactLocationName}</p>
+    <div style="margin: 0; padding: 0;"><ion-icon name="${this.getWeatherIconName(weatherData.weather[0].main)}" style="font-size: 1.5em; color: ${this.getWeatherIconColor(weatherData.weather[0].main)};"></ion-icon></div>
+    <p style="margin: 0; padding: 0; font-size: 16px;">${this.translateWeatherDescription(weatherData.weather[0].description)}</p>
+    <p style="margin: 0; padding: 0;">${weatherData.main.temp}°C</p>
+  </div>
+  `;
+
+  // Criar a janela de informações do pin
+  const infoWindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+  // Criar o marcador tradicional
+  const marker = new google.maps.Marker({
+    position: coordinate,
+    map: this.map,
+    title: neighborhoodName // Título do marcador
+  });
+
+  // Adicionar evento de clique para abrir a janela de informações ao clicar no marcador
+  marker.addListener('click', () => {
+    // Fechar a janela de informações anterior, se existir
+    if (this.currentInfoWindow) {
+      this.currentInfoWindow.close();
+    }
+    // Abrir a nova janela de informações
+    infoWindow.open(this.map, marker);
+    // Armazenar a janela de informações atual para futura referência
+    this.currentInfoWindow = infoWindow;
+  });
+
+  // Adicionar o marcador à lista de marcadores
+  this.markers.push(marker);
+}
   
-        // Criar a janela de informações do pin
-        const infoWindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+  getWeatherIcon(weatherCondition: string): string {
+    let iconPath: string;
   
-        // Abrir a janela de informações ao clicar no pin
-        infoWindow.open(this.map, marker);
-      } catch (error) {
-        console.error('Erro ao obter dados do clima:', error);
-      }
-    });
+    switch (weatherCondition) {
+      case 'Clear':
+        iconPath = 'assets/icon/sunny.svg';
+        break;
+      case 'Clouds':
+        iconPath = 'assets/icon/cloudy.svg';
+        break;
+      case 'Rain':
+        iconPath = 'assets/icon/rainy.svg';
+        break;
+      case 'Thunderstorm':
+        iconPath = 'assets/icon/thunderstorm.svg';
+        break;
+      case 'Snow':
+        iconPath = 'assets/icon/snow.svg';
+        break;
+      default:
+        iconPath = 'assets/icon/partly-sunny.svg';
+    }
+  
+    return iconPath;
   }
   
+  
+  getWeatherIconName(weatherCondition: string): string {
+    switch (weatherCondition) {
+      case 'Clear':
+        return 'sunny';
+      case 'Clouds':
+        return 'cloudy';
+      case 'Rain':
+        return 'rainy';
+      case 'Thunderstorm':
+        return 'thunderstorm';
+      case 'Snow':
+        return 'snow';
+      default:
+        return 'partly-sunny';
+    }
+  }
+
+  getWeatherIconColor(weatherCondition: string): string {
+    let color: string;
+  
+    switch (weatherCondition) {
+      case 'Clear':
+        color = '#FFD700'; // Amarelo
+        break;
+      case 'Clouds':
+        color = '#A9A9A9'; // Cinza
+        break;
+      case 'Rain':
+        color = '#4682B4'; // Azul
+        break;
+      case 'Thunderstorm':
+        color = '#800080'; // Roxo
+        break;
+      case 'Snow':
+        color = '#FFFFFF'; // Branco
+        break;
+      default:
+        color = '#FFA500'; // Laranja
+    }
+  
+    return color;
+  }
+  
+  
+
   async getExactLocationName(lat: number, lng: number): Promise<string> {
     try {
       const response: any = await this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBZJF-Hp_BLZ7bj5pS7wIxmWNC_8V-GoEE`).toPromise();
@@ -356,8 +430,6 @@ const contentString = `
   
   
   
-  
-
   translateWeatherDescription(description: string): string {
     const translations: { [key: string]: string } = {
       "clear sky": "céu limpo",
@@ -373,4 +445,7 @@ const contentString = `
 
     return translations[description] || description;
   }
+
 }
+
+
