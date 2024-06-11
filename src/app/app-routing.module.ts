@@ -51,6 +51,10 @@ const routes: Routes = [
   },  {
     path: 'mapa',
     loadChildren: () => import('./mapa/mapa.module').then( m => m.MapaPageModule)
+  },
+  {
+    path: 'creditos',
+    loadChildren: () => import('./creditos/creditos.module').then( m => m.CreditosPageModule)
   }
 
 ];
