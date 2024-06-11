@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button style="color: #09136b"></ion-menu-button>
     </ion-buttons>
-    <img src="../../assets/imgs/applogo.png" alt="Imagem" class="logoapp">
+    <div class="ion-text-center">
+      <img src="../../assets/imgs/applogo.png" alt="Imagem" class="logoapp" />
+    </div>
     <ion-buttons slot="end">
       <ion-button (click)="mostrarCaixaDuvida()">
         <ion-icon name="help" style="color: #09136b"></ion-icon>
@@ -11,13 +13,16 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content class="ion-padding">
   <div>
     <h1 class="tipesq">ClimaVia</h1>
   </div>
   <div class="intro-content">
-    <img src="../../assets/imgs/logo_2.png" alt="Imagem Introdução" class="logo2">
+    <img
+      src="../../assets/imgs/logo_2.png"
+      alt="Imagem Introdução"
+      class="logo2"
+    />
     <p class="intro-text">Descubra a previsão atual da cidade que deseja:</p>
   </div>
 
@@ -45,5 +50,4 @@
       </ion-item>
     </ion-list>
   </div>
-
 </ion-content>

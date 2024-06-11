@@ -1,37 +1,74 @@
+.suggestions {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestions div {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.suggestions div:last-child {
+  border-bottom: none;
+}
+
+.suggestions div:hover {
+  background-color: #f0f0f0;
+}
+
+.custom-toolbar {
+  --background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logoapp {
-    display: block;
-    margin: 0 auto; 
-    max-height: 50px; 
-  }
- 
-  .custom-toolbar {
-    --background: #e0ad40; 
-    --ion-color-base: #e0ad40; 
-    border: 1px solid black;
-    box-shadow:#000000;
-  }
- 
-  .suggestions {
-    position: absolute;
-    background: white;
-    border: 1px solid #ccc;
-    z-index: 1000;
-    width: calc(100% - 32px);
-    margin-top: -16px;
-  }
+  height: 40px;
+  margin: 0 auto;
+}
 
-  .suggestions div {
-    padding: 8px;
-    cursor: pointer;
-  }
+.content-wrapper {
+  text-align: center;
+}
 
-  .suggestions div:hover {
-    background-color: #eee;
-  }
+.tipesq {
+  font-size: 1.5em;
+  color: #09136b;
+  margin-bottom: 20px;
+}
 
-  ion-item {
-    margin-bottom: 16px;
-  }
-  
-  
-  
+.credit-item {
+  --ion-item-background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 20px;
+}
+
+.credit-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 15px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+  font-size: 1em;
+  color: #333;
+  padding: 10px;
+  text-align: center;
+}

@@ -1,52 +1,55 @@
-
 .custom-toolbar {
-  --background: #e0ad40; 
-  --ion-color-base: #e0ad40; 
-  border: 1px solid black;
-  box-shadow:#000000;
+  --background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.header-logo-container {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
 .logoapp {
-    display: block;
-    margin: 0 auto;
-    max-height: 50px; 
-  }
-.tipesq {
-    font-size: 25px;
-    color: black;
-    text-align: center;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-bottom: 30px; 
-    margin-top: 10px;
+  height: 40px;
 }
-ion-content {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100%; /* Ocupa toda a altura da página */
-  }
-  
-  .content-wrapper {
-    max-width: 500px; /* Ajusta a largura máxima conforme necessário */
-    width: 100%; /* Garante que o conteúdo seja centralizado */
-    margin-top: 20px; /* Adiciona espaço entre o título e o conteúdo */
-  }
-  
-  
-  .gi, .ai, .brat1, .brat2 {
-    display: block;
-    margin: 0 auto; /* Centraliza horizontalmente */
-  }
-  
-  .description {
-    text-align: center; /* Centraliza o texto */
-    margin-top: 20px; /* Adiciona espaço entre a descrição e a imagem acima */
-    margin-bottom: 20px; /* Adiciona espaço entre a descrição e o título abaixo */
-  }
-  
-  
-  
-  
-  
+
+.content-wrapper {
+  text-align: center;
+}
+
+.tipesq {
+  font-size: 1.5em;
+  color: #09136b;
+  margin-bottom: 20px;
+}
+
+.credit-item {
+  --ion-item-background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 20px;
+}
+
+.credit-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 15px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+  font-size: 1em;
+  color: #333;
+  padding: 10px;
+  text-align: center;
+}

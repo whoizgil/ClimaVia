@@ -303,14 +303,12 @@ export class MapaPage implements OnInit {
 }
 
 async addPin(coordinate: any, weatherData: any, neighborhoodName: string) {
-   
-    const exactLocationName = await this.getExactLocationName(
-        coordinate.lat(),
-        coordinate.lng()
-    );
+  const exactLocationName = await this.getExactLocationName(
+    coordinate.lat(),
+    coordinate.lng()
+  );
 
-    
-    const contentString = `
+  const contentString = `
     <div style="font-size: 14px; text-align: center;">
         <h2 style="margin: 0; padding-bottom: 20px;">${neighborhoodName}</h2>
         <p style="margin: 0; padding-bottom: 10px; font-weight: bold;">${exactLocationName}</p>
@@ -326,59 +324,60 @@ async addPin(coordinate: any, weatherData: any, neighborhoodName: string) {
         )}</p>
         <h3 style="margin: 0; padding: 0;">${weatherData.main.temp}°C</h3>
     </div>
-    `;
+  `;
 
-    
-    const infoWindow = new google.maps.InfoWindow({
-        content: contentString,
-    });
+  const infoWindow = new google.maps.InfoWindow({
+    content: contentString,
+  });
 
-  
-    const marker = new google.maps.Marker({
-        position: coordinate,
-        map: this.map,
-        title: neighborhoodName, 
-    });
+  const marker = new google.maps.Marker({
+    position: coordinate,
+    map: this.map,
+    title: neighborhoodName,
+  });
 
-   
-    marker.addListener('click', () => {
-        
-        if (this.currentInfoWindow) {
-            this.currentInfoWindow.close();
-        }
-        
-        infoWindow.open(this.map, marker);
-        
-        this.currentInfoWindow = infoWindow;
-    });
+  marker.addListener('click', () => {
+    if (this.currentInfoWindow) {
+      this.currentInfoWindow.close();
+    }
+    infoWindow.open(this.map, marker);
+    this.currentInfoWindow = infoWindow;
+  });
 
-    
-    this.markers.push(marker);
+  this.markers.push(marker);
 
-    
-    const forecastData = await this.getWeatherForecast(coordinate.lat(), coordinate.lng());
-    const forecastContent = forecastData
-        .slice(1, 6) 
-        .map((forecast: any) => `
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-    <p style="margin: 0;">${new Date(forecast.dt * 1000).toLocaleTimeString('pt-BR', { hour: 'numeric', minute: 'numeric' })}</p>
-    <p style="margin: 0;">${this.translateWeatherDescription(forecast.weather[0].description)}</p>
-    <p style="margin: 0;">${forecast.main.temp}°C</p>
-    <ion-icon name="${this.getWeatherIconName(forecast.weather[0].main)}" style="width: 20px; height: 20px; color: ${this.getWeatherIconColor(forecast.weather[0].main)};"></ion-icon>
-</div>
+  const forecastData = await this.getWeatherForecast(coordinate.lat(), coordinate.lng());
+  const forecastContent = this.getNextFiveForecasts(forecastData)
+    .map((forecast: any) => `
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+        <p style="margin: 0;">${new Date(forecast.dt * 1000).toLocaleTimeString('pt-BR', { hour: 'numeric', minute: 'numeric' })}</p>
+        <p style="margin: 0;">${this.translateWeatherDescription(forecast.weather[0].description)}</p>
+        <p style="margin: 0;">${forecast.main.temp}°C</p>
+        <ion-icon name="${this.getWeatherIconName(forecast.weather[0].main)}" style="width: 20px; height: 20px; color: ${this.getWeatherIconColor(forecast.weather[0].main)};"></ion-icon>
+      </div>
+    `)
+    .join('');
 
-        `)
-        .join('');
+  const forecastString = `
+    <div style="margin-top: 20px;">
+      <h4 style="margin: 0;">Próximas horas:</h4>
+      ${forecastContent}
+    </div>
+  `;
 
-    const forecastString = `
-        <div style="margin-top: 20px;">
-            <h4 style="margin: 0;">Próximas horas:</h4>
-            ${forecastContent}
-        </div>
-    `;
-
-    infoWindow.setContent(contentString + forecastString);
+  infoWindow.setContent(contentString + forecastString);
 }
+
+getNextFiveForecasts(forecastData: any[]): any[] {
+  const currentTime = new Date().getTime();
+  const oneHourInMilliseconds = 3600000;
+  const threeHoursInMilliseconds = 3 * oneHourInMilliseconds;
+  return forecastData.filter((forecast: any) => {
+    const forecastTime = forecast.dt * 1000;
+    return forecastTime >= currentTime && forecastTime <= currentTime + 5 * threeHoursInMilliseconds;
+  }).slice(0, 5);
+}
+
 
 
 
