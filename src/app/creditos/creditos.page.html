@@ -1,13 +1,66 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>creditos</ion-title>
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: #09136b"></ion-menu-button>
+    </ion-buttons>
+    <img src="../../assets/imgs/applogo.png" alt="Imagem" class="logoapp">
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarCaixaDuvida()">
+        <ion-icon name="help" style="color: #09136b"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">creditos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" scroll-y="true" scroll-x="false" overflow-scroll="true" fullscreen="true">
+  <div class="content-wrapper">
+    <h1 class="tipesq">Créditos do Projeto</h1>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8" class="ion-text-center">
+          <ion-label>
+            Aluna: Gil
+          </ion-label>
+          <ion-item>
+            <ion-img src="../../assets/imgs/gilft.jpg" class="gi"></ion-img>
+          </ion-item>
+          <ion-label class="description">
+            Gil Guimarães, responsável pela maioria das funções em Typescript. Além de levar em consideração as melhorias sugeridas pelo colega de projeto.
+          </ion-label>
+        </ion-col>
+        <ion-col size="8" class="ion-text-center">
+          <ion-label>
+            Aluno: Arthur 
+          </ion-label>
+          <ion-item>
+            <ion-img src="../../assets/imgs/arthurft.jpg" class="ai"></ion-img>
+          </ion-item>
+          <ion-label class="description">
+            Arthur Buçard, responsável pela identidade do app. Liderando a parte criativa e sugerindo melhorias de funcionamento das principais funções do app.
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8" class="ion-text-center">
+          <ion-row>
+            <ion-col size="8">
+              <ion-item>
+                <ion-img src="../../assets/imgs/brat.jpg" class="brat1"></ion-img>
+
+                <ion-img src="../../assets/imgs/brat2.jpg" class="brat2"></ion-img>
+              </ion-item>
+            </ion-col>
+            <ion-col size="8">
+              <ion-item>
+                <ion-label class="description">
+                  E esse foi o nosso projeto, esperam que tenham gostado. Esse é só o nosso jeitinho brat de ser.
+                </ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

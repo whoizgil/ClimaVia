@@ -1,0 +1,52 @@
+
+.custom-toolbar {
+  --background: #e0ad40; 
+  --ion-color-base: #e0ad40; 
+  border: 1px solid black;
+  box-shadow:#000000;
+}
+.logoapp {
+    display: block;
+    margin: 0 auto;
+    max-height: 50px; 
+  }
+.tipesq {
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-bottom: 30px; 
+    margin-top: 10px;
+}
+ion-content {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100%; /* Ocupa toda a altura da página */
+  }
+  
+  .content-wrapper {
+    max-width: 500px; /* Ajusta a largura máxima conforme necessário */
+    width: 100%; /* Garante que o conteúdo seja centralizado */
+    margin-top: 20px; /* Adiciona espaço entre o título e o conteúdo */
+  }
+  
+  
+  .gi, .ai, .brat1, .brat2 {
+    display: block;
+    margin: 0 auto; /* Centraliza horizontalmente */
+  }
+  
+  .description {
+    text-align: center; /* Centraliza o texto */
+    margin-top: 20px; /* Adiciona espaço entre a descrição e a imagem acima */
+    margin-bottom: 20px; /* Adiciona espaço entre a descrição e o título abaixo */
+  }
+  
+  
+  
+  
+  
