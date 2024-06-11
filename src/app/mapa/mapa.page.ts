@@ -283,59 +283,104 @@ export class MapaPage implements OnInit {
     }
   }
 
-  async addPin(coordinate: any, weatherData: any, neighborhoodName: string) {
+  async getWeatherForecast(lat: number, lng: number): Promise<any[]> {
+    const apiKey = '2a14f0fa6a03ab6afe2e622b509b5238'; 
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric&lang=pt`;
+
+    try {
+        console.log(`Fetching weather forecast from: ${url}`);
+        const response: any = await this.http.get(url).toPromise();
+        if (response && response.list) {
+            return response.list;
+        } else {
+            console.error('Error in weather forecast response:', response);
+            throw new Error('Error fetching weather forecast data');
+        }
+    } catch (error) {
+        console.error('Error fetching weather forecast data:', error);
+        throw error;
+    }
+}
+
+async addPin(coordinate: any, weatherData: any, neighborhoodName: string) {
     // Obter o nome exato do local
     const exactLocationName = await this.getExactLocationName(
-      coordinate.lat(),
-      coordinate.lng()
+        coordinate.lat(),
+        coordinate.lng()
     );
 
     // Montar o conteúdo da janela de informações do pin
     const contentString = `
-  <div style="font-size: 14px; text-align: center;">
-    <h2 style="margin: 0; padding-bottom: 20px;">${neighborhoodName}</h2>
-    <p style="margin: 0; padding-bottom: 10px; font-weight: bold;">${exactLocationName}</p>
-    <div style="margin: 0; padding: 0;">
-      <ion-icon name="${this.getWeatherIconName(
-        weatherData.weather[0].main
-      )}" style="font-size: 3em; color: ${this.getWeatherIconColor(
-      weatherData.weather[0].main
-    )};"></ion-icon>
+    <div style="font-size: 14px; text-align: center;">
+        <h2 style="margin: 0; padding-bottom: 20px;">${neighborhoodName}</h2>
+        <p style="margin: 0; padding-bottom: 10px; font-weight: bold;">${exactLocationName}</p>
+        <div style="margin: 0; padding: 0;">
+            <ion-icon name="${this.getWeatherIconName(
+                weatherData.weather[0].main
+            )}" style="font-size: 3em; color: ${this.getWeatherIconColor(
+                weatherData.weather[0].main
+            )};"></ion-icon>
+        </div>
+        <p style="margin: 0; padding: 0; font-size: 16px;">${this.translateWeatherDescription(
+            weatherData.weather[0].description
+        )}</p>
+        <h3 style="margin: 0; padding: 0;">${weatherData.main.temp}°C</h3>
     </div>
-    <p style="margin: 0; padding: 0; font-size: 16px;">${this.translateWeatherDescription(
-      weatherData.weather[0].description
-    )}</p>
-    <h3 style="margin: 0; padding: 0;">${weatherData.main.temp}°C</h3>
-  </div>
-  `;
+    `;
 
     // Criar a janela de informações do pin
     const infoWindow = new google.maps.InfoWindow({
-      content: contentString,
+        content: contentString,
     });
 
     // Criar o marcador tradicional
     const marker = new google.maps.Marker({
-      position: coordinate,
-      map: this.map,
-      title: neighborhoodName, // Título do marcador
+        position: coordinate,
+        map: this.map,
+        title: neighborhoodName, // Título do marcador
     });
 
     // Adicionar evento de clique para abrir a janela de informações ao clicar no marcador
     marker.addListener('click', () => {
-      // Fechar a janela de informações anterior, se existir
-      if (this.currentInfoWindow) {
-        this.currentInfoWindow.close();
-      }
-      // Abrir a nova janela de informações
-      infoWindow.open(this.map, marker);
-      // Armazenar a janela de informações atual para futura referência
-      this.currentInfoWindow = infoWindow;
+        // Fechar a janela de informações anterior, se existir
+        if (this.currentInfoWindow) {
+            this.currentInfoWindow.close();
+        }
+        // Abrir a nova janela de informações
+        infoWindow.open(this.map, marker);
+        // Armazenar a janela de informações atual para futura referência
+        this.currentInfoWindow = infoWindow;
     });
 
     // Adicionar o marcador à lista de marcadores
     this.markers.push(marker);
-  }
+
+    // Adicionar as previsões das próximas 5 horas
+    const forecastData = await this.getWeatherForecast(coordinate.lat(), coordinate.lng());
+    const forecastContent = forecastData
+        .slice(1, 6) // Pegar os próximos 5 registros
+        .map((forecast: any) => `
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+    <p style="margin: 0;">${new Date(forecast.dt * 1000).toLocaleTimeString('pt-BR', { hour: 'numeric', minute: 'numeric' })}</p>
+    <p style="margin: 0;">${this.translateWeatherDescription(forecast.weather[0].description)}</p>
+    <p style="margin: 0;">${forecast.main.temp}°C</p>
+    <ion-icon name="${this.getWeatherIconName(forecast.weather[0].main)}" style="width: 20px; height: 20px; color: ${this.getWeatherIconColor(forecast.weather[0].main)};"></ion-icon>
+</div>
+
+        `)
+        .join('');
+
+    const forecastString = `
+        <div style="margin-top: 20px;">
+            <h4 style="margin: 0;">Próximas horas:</h4>
+            ${forecastContent}
+        </div>
+    `;
+
+    infoWindow.setContent(contentString + forecastString);
+}
+
+
 
   getWeatherIcon(weatherCondition: string): string {
     let iconPath: string;
