@@ -60,7 +60,7 @@ export class MapaPage implements OnInit {
     };
     script.onload = () => {
       console.log('API do Google Maps carregada com sucesso.');
-      this.checkPermissionAndInitializeMap(); // Adiciona a inicialização do mapa após o carregamento da API
+      this.checkPermissionAndInitializeMap(); 
     };
     document.head.appendChild(script);
   }
@@ -72,10 +72,10 @@ export class MapaPage implements OnInit {
         lat: geolocation.coords.latitude,
         lng: geolocation.coords.longitude,
       };
-      this.initMap(myLatLng); // Se a permissão for concedida, inicialize o mapa com a localização atual
+      this.initMap(myLatLng); 
     } catch (error) {
       console.error('Erro ao obter a localização atual:', error);
-      this.initMap(); // Se a permissão for negada, inicialize o mapa sem coordenadas
+      this.initMap(); 
     }
   }
 
@@ -106,7 +106,7 @@ export class MapaPage implements OnInit {
     try {
       this.map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
-        center: myLatLng, // Use as coordenadas fornecidas ou o centro padrão do mapa
+        center: myLatLng, 
       });
 
       this.directionsService = new google.maps.DirectionsService();
@@ -123,7 +123,7 @@ export class MapaPage implements OnInit {
         'destination-input'
       ) as HTMLInputElement;
 
-      // Adiciona pin para o ponto de partida se as coordenadas forem fornecidas
+      
       if (myLatLng.lat !== undefined && myLatLng.lng !== undefined) {
         const originMarker = new google.maps.Marker({
           position: myLatLng,
@@ -133,7 +133,7 @@ export class MapaPage implements OnInit {
         this.markers.push(originMarker);
       }
 
-      // Adiciona pin para o ponto de destino (se definido)
+    
       if (this.destination) {
         const destinationPlace = await this.getPlaceDetails(this.destination);
         if (destinationPlace) {
@@ -146,7 +146,7 @@ export class MapaPage implements OnInit {
         }
       }
 
-      // Atualiza a rota se os pontos de partida e destino estiverem definidos
+      
       if (this.origin && this.destination) {
         this.calculateAndDisplayRoute();
       }
@@ -221,7 +221,7 @@ export class MapaPage implements OnInit {
         this.directionsDisplay.setDirections(response);
         this.routeCoordinates = response.routes[0].overview_path;
         this.addPinsAlongRoute();
-        this.addPinsAlongRoute(); // Chama a função para adicionar os pins
+        this.addPinsAlongRoute(); 
       } else {
         window.alert('Falha ao carregar a rota: ' + status);
       }
@@ -261,7 +261,7 @@ export class MapaPage implements OnInit {
 
   async addPinsAlongRoute() {
     const numCoordinates = this.routeCoordinates.length;
-    const step = Math.max(1, Math.floor(numCoordinates / 10)); // Limitar a 10 pins
+    const step = Math.max(1, Math.floor(numCoordinates / 10)); 
 
     for (let i = 0; i < numCoordinates; i += step) {
       const coordinate = this.routeCoordinates[i];
@@ -270,7 +270,7 @@ export class MapaPage implements OnInit {
         coordinate.lng()
       );
 
-      // Verifica se o bairro está destacado nas previsões do tempo
+      
       const neighborhood = await this.getNeighborhoodName(
         coordinate.lat(),
         coordinate.lng()
@@ -279,7 +279,7 @@ export class MapaPage implements OnInit {
         this.addPin(coordinate, weatherData, neighborhood);
       }
 
-      if (this.weatherData.length >= 10) break; // Garantir que não ultrapasse 10 pins
+      if (this.weatherData.length >= 10) break; 
     }
   }
 
@@ -303,13 +303,13 @@ export class MapaPage implements OnInit {
 }
 
 async addPin(coordinate: any, weatherData: any, neighborhoodName: string) {
-    // Obter o nome exato do local
+   
     const exactLocationName = await this.getExactLocationName(
         coordinate.lat(),
         coordinate.lng()
     );
 
-    // Montar o conteúdo da janela de informações do pin
+    
     const contentString = `
     <div style="font-size: 14px; text-align: center;">
         <h2 style="margin: 0; padding-bottom: 20px;">${neighborhoodName}</h2>
@@ -328,37 +328,37 @@ async addPin(coordinate: any, weatherData: any, neighborhoodName: string) {
     </div>
     `;
 
-    // Criar a janela de informações do pin
+    
     const infoWindow = new google.maps.InfoWindow({
         content: contentString,
     });
 
-    // Criar o marcador tradicional
+  
     const marker = new google.maps.Marker({
         position: coordinate,
         map: this.map,
-        title: neighborhoodName, // Título do marcador
+        title: neighborhoodName, 
     });
 
-    // Adicionar evento de clique para abrir a janela de informações ao clicar no marcador
+   
     marker.addListener('click', () => {
-        // Fechar a janela de informações anterior, se existir
+        
         if (this.currentInfoWindow) {
             this.currentInfoWindow.close();
         }
-        // Abrir a nova janela de informações
+        
         infoWindow.open(this.map, marker);
-        // Armazenar a janela de informações atual para futura referência
+        
         this.currentInfoWindow = infoWindow;
     });
 
-    // Adicionar o marcador à lista de marcadores
+    
     this.markers.push(marker);
 
-    // Adicionar as previsões das próximas 5 horas
+    
     const forecastData = await this.getWeatherForecast(coordinate.lat(), coordinate.lng());
     const forecastContent = forecastData
-        .slice(1, 6) // Pegar os próximos 5 registros
+        .slice(1, 6) 
         .map((forecast: any) => `
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
     <p style="margin: 0;">${new Date(forecast.dt * 1000).toLocaleTimeString('pt-BR', { hour: 'numeric', minute: 'numeric' })}</p>
@@ -430,22 +430,22 @@ async addPin(coordinate: any, weatherData: any, neighborhoodName: string) {
 
     switch (weatherCondition) {
       case 'Clear':
-        color = '#FFD700'; // Amarelo
+        color = '#FFD700'; 
         break;
       case 'Clouds':
-        color = '#A9A9A9'; // Cinza
+        color = '#A9A9A9'; 
         break;
       case 'Rain':
-        color = '#4682B4'; // Azul
+        color = '#4682B4'; 
         break;
       case 'Thunderstorm':
-        color = '#800080'; // Roxo
+        color = '#800080'; 
         break;
       case 'Snow':
-        color = '#FFFFFF'; // Branco
+        color = '#FFFFFF'; 
         break;
       default:
-        color = '#FFA500'; // Laranja
+        color = '#FFA500'; 
     }
 
     return color;
