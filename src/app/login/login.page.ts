@@ -40,16 +40,6 @@ export class LoginPage {
     }
   }
 
-  async signInWithGoogle() {
-    try {
-      const result = await this.authService.googleSignIn();
-      this.presentSuccessToast('Usuário logado com sucesso');
-      this.router.navigate(['/feed-infinito']);
-    } catch (error) {
-      console.error('Erro ao fazer login com o Google', error);
-      this.presentErrorToast('Erro ao fazer login com o Google');
-    }
-  }
 
   isValidEmail(email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
