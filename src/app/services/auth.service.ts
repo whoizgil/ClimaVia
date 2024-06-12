@@ -14,9 +14,9 @@ export class AuthService {
     this.user$ = this.afAuth.authState;
   }
 
-  googleSignIn(): Promise<any> {
+  googleSignIn(): Promise<void> {
     const provider = new firebase.auth.GoogleAuthProvider(); 
-    return this.afAuth.signInWithPopup(provider);
+    return this.afAuth.signInWithRedirect(provider);
   }
 
   emailSignIn(email: string, password: string): Promise<any> {

@@ -24,15 +24,15 @@ export class MapaPage implements OnInit {
   routeCoordinates: any[] = [];
   markers: any[] = [];
   currentInfoWindow: google.maps.InfoWindow | null = null;
+  getPlaceDetails: any;
 
   constructor(
     private geolocation: Geolocation,
     private http: HttpClient,
-    private alertController: AlertController 
-) {
+    private alertController: AlertController
+  ) {
     (window as any).initMap = this.initMap.bind(this);
-}
-
+  }
 
   ngOnInit() {
     this.loadMapScript();
@@ -60,53 +60,66 @@ export class MapaPage implements OnInit {
     };
     script.onload = () => {
       console.log('API do Google Maps carregada com sucesso.');
-      this.checkPermissionAndInitializeMap(); 
+      this.checkPermissionAndInitializeMap();
     };
     document.head.appendChild(script);
   }
 
   async checkPermissionAndInitializeMap() {
-    try {
-      const geolocation = await this.geolocation.getCurrentPosition();
-      const myLatLng = {
-        lat: geolocation.coords.latitude,
-        lng: geolocation.coords.longitude,
-      };
-      this.initMap(myLatLng); 
-    } catch (error) {
-      console.error('Erro ao obter a localização atual:', error);
-      this.initMap(); 
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const myLatLng = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          this.initMap(myLatLng);
+          try {
+            const address = await this.getAddressFromCoordinates(myLatLng.lat, myLatLng.lng);
+            this.origin = address;
+            if (this.originInput) {
+              this.originInput.value = this.origin;
+            }
+          } catch (error) {
+            console.error('Erro ao obter endereço:', error);
+          }
+        },
+        (error) => {
+          console.error('Erro ao obter a localização do usuário:', error);
+          this.initMap();
+        }
+      );
+    } else {
+      console.error('Navegador não suporta geolocalização.');
+      this.initMap();
     }
   }
 
-  async getPlaceDetails(placeName: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const request = {
-        query: placeName,
-        fields: ['geometry', 'name'],
-      };
-      this.placesService.findPlaceFromQuery(
-        request,
-        (results: any[], status: any) => {
-          if (
-            status === google.maps.places.PlacesServiceStatus.OK &&
-            results &&
-            results.length > 0
-          ) {
-            resolve(results[0]);
-          } else {
-            reject(new Error('Local não encontrado'));
-          }
-        }
-      );
-    });
+  async getAddressFromCoordinates(lat: number, lng: number): Promise<string> {
+    try {
+      const response: any = await this.http
+        .get(
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBZJF-Hp_BLZ7bj5pS7wIxmWNC_8V-GoEE`
+        )
+        .toPromise();
+      const results = response?.results;
+
+      if (results && results.length > 0) {
+        return results[0].formatted_address;
+      } else {
+        throw new Error('Local exato não encontrado');
+      }
+    } catch (error) {
+      console.error('Erro ao obter o nome exato do local:', error);
+      throw error;
+    }
   }
 
   async initMap(myLatLng: { lat?: number; lng?: number } = {}) {
     try {
       this.map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
-        center: myLatLng, 
+        center: myLatLng,
       });
 
       this.directionsService = new google.maps.DirectionsService();
@@ -123,7 +136,6 @@ export class MapaPage implements OnInit {
         'destination-input'
       ) as HTMLInputElement;
 
-      
       if (myLatLng.lat !== undefined && myLatLng.lng !== undefined) {
         const originMarker = new google.maps.Marker({
           position: myLatLng,
@@ -133,7 +145,6 @@ export class MapaPage implements OnInit {
         this.markers.push(originMarker);
       }
 
-    
       if (this.destination) {
         const destinationPlace = await this.getPlaceDetails(this.destination);
         if (destinationPlace) {
@@ -146,7 +157,6 @@ export class MapaPage implements OnInit {
         }
       }
 
-      
       if (this.origin && this.destination) {
         this.calculateAndDisplayRoute();
       }
@@ -221,7 +231,6 @@ export class MapaPage implements OnInit {
         this.directionsDisplay.setDirections(response);
         this.routeCoordinates = response.routes[0].overview_path;
         this.addPinsAlongRoute();
-        this.addPinsAlongRoute(); 
       } else {
         window.alert('Falha ao carregar a rota: ' + status);
       }
@@ -282,6 +291,8 @@ export class MapaPage implements OnInit {
       if (this.weatherData.length >= 10) break; 
     }
   }
+
+
 
   async getWeatherForecast(lat: number, lng: number): Promise<any[]> {
     const apiKey = '2a14f0fa6a03ab6afe2e622b509b5238'; 
