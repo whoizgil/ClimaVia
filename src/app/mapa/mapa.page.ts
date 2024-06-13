@@ -67,33 +67,54 @@ export class MapaPage implements OnInit {
 
   async checkPermissionAndInitializeMap() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const myLatLng = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          this.initMap(myLatLng);
-          try {
-            const address = await this.getAddressFromCoordinates(myLatLng.lat, myLatLng.lng);
+        navigator.geolocation.getCurrentPosition(
+            async (position) => {
+                const myLatLng = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+                this.initMap(myLatLng);
+                try {
+                    const address = await this.getAddressFromCoordinates(myLatLng.lat, myLatLng.lng);
+                    this.origin = address;
+                    if (this.originInput) {
+                        this.originInput.value = this.origin;
+                    }
+                } catch (error) {
+                    console.error('Erro ao obter endereço:', error);
+                }
+            },
+            async (error) => {
+                console.error('Erro ao obter a localização do usuário:', error);
+                const defaultLatLng = { lat: -22.9068, lng: -43.1729 }; // Coordenada padrão (Rio de Janeiro, Brasil)
+                this.initMap(defaultLatLng);
+                try {
+                    const address = await this.getAddressFromCoordinates(defaultLatLng.lat, defaultLatLng.lng);
+                    this.origin = address;
+                    if (this.originInput) {
+                        this.originInput.value = this.origin;
+                    }
+                } catch (error) {
+                    console.error('Erro ao obter endereço padrão:', error);
+                }
+            }
+        );
+    } else {
+        console.error('Navegador não suporta geolocalização.');
+        const defaultLatLng = { lat: -22.9068, lng: -43.1729 }; 
+        this.initMap(defaultLatLng);
+        try {
+            const address = await this.getAddressFromCoordinates(defaultLatLng.lat, defaultLatLng.lng);
             this.origin = address;
             if (this.originInput) {
-              this.originInput.value = this.origin;
+                this.originInput.value = this.origin;
             }
-          } catch (error) {
-            console.error('Erro ao obter endereço:', error);
-          }
-        },
-        (error) => {
-          console.error('Erro ao obter a localização do usuário:', error);
-          this.initMap();
+        } catch (error) {
+            console.error('Erro ao obter endereço padrão:', error);
         }
-      );
-    } else {
-      console.error('Navegador não suporta geolocalização.');
-      this.initMap();
     }
-  }
+}
+
 
   async getAddressFromCoordinates(lat: number, lng: number): Promise<string> {
     try {
